@@ -1,8 +1,7 @@
 ﻿using Ecommerce.Models;
 using System;
-using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Ecommerce.Controllers
@@ -49,9 +48,29 @@ namespace Ecommerce.Controllers
             return RedirectToAction("Index","Produto");
         }
 
-        public ActionResult AlterarProduto(int id)
+     
+        public ActionResult AlterarProduto(int id) 
         {
+            ViewBag.Produto = contexto.Produtos.Find(id);
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult AlterarProduto(int txtId,string txtNome, string txtDescricao, string txtPreco, string txtCategoria)
+        {
+
+            Produto produto = contexto.Produtos.Find(txtId);
+
+            produto.Nome = txtNome;
+            produto.Descricao = txtDescricao;
+            produto.Preco = Convert.ToDouble(txtPreco);
+            produto.Categoria = txtCategoria;
+
+            //contexto.Entry(produto).State = System.Data.Entity.EntityState.Modified; ou
+            contexto.Entry(produto).State = EntityState.Modified;
+            contexto.SaveChanges();
+
+            return RedirectToAction("Index", "Produto");
         }
 
     }
