@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = null;
+    DateTime data = ViewBag.Data;
+    List<Ecommerce.Models.Produto> produtos = ViewBag.Produtos;
+    
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Gerenciamentos de Produtos</title>
+</head>
+<body>
+    <h1>Gerenciamento de Produtos</h1>
+    @* link padrao do html *@
+    @*<a href="~/Views/Produto/Cadastrar"> Cadastrar Produto</a>*@
+    
+   
+    @* link padrao mvc | Razor |=  *@
+    @Html.ActionLink("Cadastrar Produto", "CadastrarProduto", "Produto")
+    @* order do link mvc| Nome do link | Nome do arquivo pagina| referenciamento controller *@
+
+    <div>
+
+    </div>
+
+    @data
+</body>
+</html>
