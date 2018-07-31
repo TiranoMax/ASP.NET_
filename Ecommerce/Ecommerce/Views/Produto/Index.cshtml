@@ -56,7 +56,7 @@
                 <th>Categoria</th>
             </tr>
             
-                @foreach (var Produtos in ViewBag.Produtos)
+                @foreach (Ecommerce.Models.Produto Produtos in produtos)
                 {
                     <tr>
                         <td>@Produtos.Nome</td>
