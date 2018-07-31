@@ -14,7 +14,7 @@ namespace Ecommerce.Controllers
         public ActionResult Index()
         {
             ViewBag.Data = DateTime.Now;
-            ViewBag.Produtos = contexto.Produtos.ToList();
+            ViewBag.Produtos = contexto.Produtos.ToList();// lista tudo jogando para uma viewBag
             return View();
         }
 
@@ -38,6 +38,20 @@ namespace Ecommerce.Controllers
             contexto.SaveChanges();
 
             return RedirectToAction("Index", "Produto");
+        }
+        public ActionResult RemoverProduto(int id)
+        {
+            Produto p = contexto.Produtos.Find(id);
+
+            contexto.Produtos.Remove(p);
+            contexto.SaveChanges();
+            
+            return RedirectToAction("Index","Produto");
+        }
+
+        public ActionResult AlterarProduto(int id)
+        {
+            return View();
         }
 
     }
