@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Ecommerce_ASP_NET.Models
+namespace Ecommerce.Models
 {
     [Table("Produtos")]
     public class Produto
