@@ -18,7 +18,7 @@
     <div>
         @using (Html.BeginForm())
         {
-            @Html.Hidden("txtId");
+            @Html.Hidden("txtId", produto.ProdutoId);
             @Html.Label("Nome do produto")
             @Html.TextBox("txtNome", produto.Nome)<br />
 
