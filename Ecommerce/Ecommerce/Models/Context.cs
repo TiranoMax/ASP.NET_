@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 
 
-namespace Ecommerce_ASP_NET.Models
+namespace Ecommerce.Models
 {
     public class Context : DbContext
     {
