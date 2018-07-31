@@ -54,6 +54,8 @@
                 <th>Descrição </th>
                 <th>Preço</th>
                 <th>Categoria</th>
+                <th>Alterar</th>
+                <th>Remover</th>
             </tr>
             
                 @foreach (Ecommerce.Models.Produto Produtos in produtos)
@@ -63,6 +65,8 @@
                         <td>@Produtos.Descricao</td>
                         <td>@Produtos.Preco</td>
                         <td>@Produtos.Categoria</td>
+                        <td>@Html.ActionLink("Remover", "RemoverProduto", "Produto",new { id = Produtos.ProdutoId}, null)</td>
+                        <td>@Html.ActionLink("Alterar", "AlterarProduto", "Produto",new { id = Produtos.ProdutoId}, null)</td>
                     </tr>
                  }
             
