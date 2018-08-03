@@ -1,4 +1,5 @@
-﻿using Ecommerce.Models;
+﻿using Ecommerce.DAL;
+using Ecommerce.Models;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -8,12 +9,11 @@ namespace Ecommerce.Controllers
 {
     public class ProdutoController : Controller
     {
-        Context contexto = new Context();
         // GET: Produto
         public ActionResult Index()
         {
             ViewBag.Data = DateTime.Now;
-            ViewBag.Produtos = contexto.Produtos.ToList();// lista tudo jogando para uma viewBag
+            ViewBag.Produtos = ProdutoDAO.RetornarProdutos();// lista tudo jogando para uma viewBag
             return View();
         }
 
@@ -32,26 +32,21 @@ namespace Ecommerce.Controllers
                 Preco = Convert.ToDouble(txtPreco),
                 Categoria = txtCategoria
             };
-
-            contexto.Produtos.Add(produto);
-            contexto.SaveChanges();
+            ProdutoDAO.CadastrarProduto(produto);
 
             return RedirectToAction("Index", "Produto");
         }
+
         public ActionResult RemoverProduto(int id)
         {
-            Produto p = contexto.Produtos.Find(id);
-
-            contexto.Produtos.Remove(p);
-            contexto.SaveChanges();
+            ProdutoDAO.RemoverProduto(id);
             
             return RedirectToAction("Index","Produto");
         }
 
-     
         public ActionResult AlterarProduto(int id) 
         {
-            ViewBag.Produto = contexto.Produtos.Find(id);
+            ViewBag.Produto = ProdutoDAO.BuscarProduto(id);
             return View();
         }
 
@@ -59,7 +54,7 @@ namespace Ecommerce.Controllers
         public ActionResult AlterarProduto(int txtId,string txtNome, string txtDescricao, string txtPreco, string txtCategoria)
         {
 
-            Produto produto = contexto.Produtos.Find(txtId);
+            Produto produto = ProdutoDAO.BuscarProduto(txtId);
 
             produto.Nome = txtNome;
             produto.Descricao = txtDescricao;
@@ -67,8 +62,7 @@ namespace Ecommerce.Controllers
             produto.Categoria = txtCategoria;
 
             //contexto.Entry(produto).State = System.Data.Entity.EntityState.Modified; ou
-            contexto.Entry(produto).State = EntityState.Modified;
-            contexto.SaveChanges();
+            ProdutoDAO.AlterarProduto(produto);
 
             return RedirectToAction("Index", "Produto");
         }
