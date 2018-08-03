@@ -1,57 +1,35 @@
 ﻿
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/Layout.cshtml";
     DateTime data = ViewBag.Data;
     List<Ecommerce.Models.Produto> produtos = ViewBag.Produtos;
-    
+
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Gerenciamentos de Produtos</title>
-</head>
-<body>
+<div>
     <h1>Gerenciamento de Produtos</h1>
-    @* link padrao do html *@
-    @*<a href="~/Views/Produto/Cadastrar"> Cadastrar Produto</a>*@
-    
-   
-    @* link padrao mvc | Razor |=  *@
-    @Html.ActionLink("Cadastrar Produto", "CadastrarProduto", "Produto")
-    @* order do link mvc| Nome do link | Nome do arquivo pagina| referenciamento controller *@
-    
 
-    <div>
-        <table>
-            <tr>
-                <th>Nome do produto</th>
-                <th>Descrição </th>
-                <th>Preço</th>
-                <th>Categoria</th>
-                <th>Alterar</th>
-                <th>Remover</th>
+    <table class="table table-hover">
+        <tr class="table-default">
+            <th>Nome do produto</th>
+            <th>Descrição </th>
+            <th>Preço</th>
+            <th>Categoria</th>
+            <th>Alterar</th>
+            <th>Remover</th>
+        </tr>
+
+        @foreach (Ecommerce.Models.Produto Produtos in produtos)
+        {
+            <tr class="table-active">
+                <td>@Produtos.Nome</td>
+                <td>@Produtos.Descricao</td>
+                <td>@Produtos.Preco</td>
+                <td>@Produtos.Categoria</td>
+                <td>@Html.ActionLink("Alterar", "AlterarProduto", "Produto", new { id = Produtos.ProdutoId }, new { @class = "btn btn-outline-info" })</td>
+                <td>@Html.ActionLink("Remover", "RemoverProduto", "Produto", new { id = Produtos.ProdutoId }, new { @class = "btn btn-outline-danger" })</td>
             </tr>
-            
-                @foreach (Ecommerce.Models.Produto Produtos in produtos)
-                {
-                    <tr>
-                        <td>@Produtos.Nome</td>
-                        <td>@Produtos.Descricao</td>
-                        <td>@Produtos.Preco</td>
-                        <td>@Produtos.Categoria</td>
-                        <td>@Html.ActionLink("Remover", "RemoverProduto", "Produto",new { id = Produtos.ProdutoId}, null)</td>
-                        <td>@Html.ActionLink("Alterar", "AlterarProduto", "Produto",new { id = Produtos.ProdutoId}, null)</td>
-                    </tr>
-                 }
-            
-        </table>
-    </div>
-    <br />
-    <div>
-        @data
-    </div>
-</body>
-</html>
+        }
+
+    </table>
+    <p>Dados atualizados às: <b>@data</b></p>
+</div>
