@@ -57,10 +57,15 @@ namespace Ecommerce.DAL
         #endregion
 
         #region AlterarProduto
-        public static void AlterarProduto(Produto produto)
+        public static bool AlterarProduto(Produto produto)
         {
-            contexto.Entry(produto).State = EntityState.Modified;
-            contexto.SaveChanges();
+            if(contexto.Produtos.FirstOrDefault(x => x.Nome.Equals(produto.Nome) && x.ProdutoId != produto.ProdutoId)==null){
+                contexto.Entry(produto).State = EntityState.Modified;
+                contexto.SaveChanges();
+                return true;
+            }
+            return false;
+            
         }
         #endregion
     }
