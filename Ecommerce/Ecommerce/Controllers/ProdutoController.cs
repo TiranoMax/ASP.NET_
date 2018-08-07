@@ -67,9 +67,23 @@ namespace Ecommerce.Controllers
             produtoOriginal.Categoria = produtoAlterado.Categoria;
 
             //contexto.Entry(produto).State = System.Data.Entity.EntityState.Modified; ou
-            ProdutoDAO.AlterarProduto(produtoOriginal);
 
-            return RedirectToAction("Index", "Produto");
+            if (ModelState.IsValid)
+            {
+                if (ProdutoDAO.AlterarProduto(produtoOriginal))
+                {
+                    return RedirectToAction("Index", "Produto");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Não é possivel modificar, devido ja existir um produto com o mesmo nome!");
+                    return View(produtoOriginal);
+                }
+            }
+            else
+            {
+                return View(produtoOriginal);
+            }
         }
 
     }
