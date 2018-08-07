@@ -13,8 +13,7 @@ namespace Ecommerce.Controllers
         public ActionResult Index()
         {
             ViewBag.Data = DateTime.Now;
-            ViewBag.Produtos = ProdutoDAO.RetornarProdutos();// lista tudo jogando para uma viewBag
-            return View();
+            return View(ProdutoDAO.RetornarProdutos());
         }
 
         public ActionResult CadastrarProduto()
@@ -23,17 +22,9 @@ namespace Ecommerce.Controllers
         }
 
         [HttpPost]
-        public ActionResult CadastrarProduto(string txtNome, string txtDescricao, string txtPreco, string txtCategoria)
+        public ActionResult CadastrarProduto(Produto produto)
         {
-            Produto produto = new Models.Produto
-            {
-                Nome = txtNome,
-                Descricao = txtDescricao,
-                Preco = Convert.ToDouble(txtPreco),
-                Categoria = txtCategoria
-            };
             ProdutoDAO.CadastrarProduto(produto);
-
             return RedirectToAction("Index", "Produto");
         }
 
@@ -46,23 +37,22 @@ namespace Ecommerce.Controllers
 
         public ActionResult AlterarProduto(int id) 
         {
-            ViewBag.Produto = ProdutoDAO.BuscarProduto(id);
-            return View();
+            return View(ProdutoDAO.BuscarProduto(id));
         }
 
         [HttpPost]
-        public ActionResult AlterarProduto(int txtId,string txtNome, string txtDescricao, string txtPreco, string txtCategoria)
+        public ActionResult AlterarProduto(Produto produtoAlterado)
         {
 
-            Produto produto = ProdutoDAO.BuscarProduto(txtId);
+            Produto produtoOriginal = ProdutoDAO.BuscarProduto(produtoAlterado.ProdutoId);
 
-            produto.Nome = txtNome;
-            produto.Descricao = txtDescricao;
-            produto.Preco = Convert.ToDouble(txtPreco);
-            produto.Categoria = txtCategoria;
+            produtoOriginal.Nome = produtoAlterado.Nome;
+            produtoOriginal.Descricao = produtoAlterado.Descricao;
+            produtoOriginal.Preco = produtoAlterado.Preco;
+            produtoOriginal.Categoria = produtoAlterado.Categoria;
 
             //contexto.Entry(produto).State = System.Data.Entity.EntityState.Modified; ou
-            ProdutoDAO.AlterarProduto(produto);
+            ProdutoDAO.AlterarProduto(produtoOriginal);
 
             return RedirectToAction("Index", "Produto");
         }
