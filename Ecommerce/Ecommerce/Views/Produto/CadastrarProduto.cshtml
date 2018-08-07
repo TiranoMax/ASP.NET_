@@ -5,6 +5,8 @@
     {
         <fieldset>
             <legend>Cadastrar Produto</legend>
+            @Html.ValidationSummary(true, null, new { @class = "text-denger" })
+
             <div class="form-group">
                 @Html.LabelFor(Model => Model.Nome, new { @class = "control-label col-sm-2" })
                 <div class="col-sm-10">
