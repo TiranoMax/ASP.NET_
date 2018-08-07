@@ -19,12 +19,25 @@ namespace Ecommerce.DAL
         #endregion
 
         #region Cadastrar Produto
-        public static void CadastrarProduto(Produto produto)
+        public static bool CadastrarProduto(Produto produto)
         {
+            if(BuscarProdutoPorNome(produto) == null) { 
             contexto.Produtos.Add(produto);
             contexto.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         #endregion
+
+        public static Produto BuscarProdutoPorNome(Produto produto)
+        {
+            return contexto.Produtos.FirstOrDefault(x => x.Nome.Equals(produto.Nome));
+        }
+
 
         #region RemoverProduto
         public static void RemoverProduto(int id)
