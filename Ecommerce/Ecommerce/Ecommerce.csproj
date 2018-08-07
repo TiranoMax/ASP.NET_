@@ -110,6 +110,10 @@
     <Compile Include="Migrations\201807310104069_CriacaoBanco.Designer.cs">
       <DependentUpon>201807310104069_CriacaoBanco.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808071237221_AlterTableProduto.cs" />
+    <Compile Include="Migrations\201808071237221_AlterTableProduto.Designer.cs">
+      <DependentUpon>201808071237221_AlterTableProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\Produto.cs" />
@@ -136,6 +140,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201807310104069_CriacaoBanco.resx">
       <DependentUpon>201807310104069_CriacaoBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808071237221_AlterTableProduto.resx">
+      <DependentUpon>201808071237221_AlterTableProduto.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
