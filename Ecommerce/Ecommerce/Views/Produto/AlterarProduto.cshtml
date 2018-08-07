@@ -1,39 +1,50 @@
 ﻿@using Ecommerce.Models
 @{
-    Layout = null;
     Produto produto = ViewBag.Produto;
 
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Alterar Produto</title>
-</head>
-<body>
-    <h1>Alterar Produto</h1>
-
-    <div>
-        @using (Html.BeginForm())
-        {
+<div>
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <legend>Cadastrar Produto</legend>
             @Html.Hidden("txtId", produto.ProdutoId);
-            @Html.Label("Nome do produto")
-            @Html.TextBox("txtNome", produto.Nome)<br />
+            <div class="form-group">
+                @Html.Label("Nome do produto", new { @class = "control-label col-sm-2" })
+                <div class="col-sm-10">
+                    @Html.TextBox("txtNome", produto.Nome, new { @class = "form-control"})
+                </div>
+            </div>
 
-            @Html.Label("Descrição do produto")
-            @Html.TextBox("txtDescricao", produto.Descricao)<br />
+            <div class="form-group">
+                @Html.Label("Descrição do produto", new { @class = "control-label col-sm-2" })
+                <div class="col-sm-10">
+                    @Html.TextBox("txtDescricao", produto.Descricao, new { @class = "form-control"})
+                </div>
+            </div>
 
-            @Html.Label("Preço do produto")
-            @Html.TextBox("txtPreco", produto.Preco)<br />
+            <div class="form-group">
+                @Html.Label("Preço do produto", new { @class = "control-label col-sm-2" })
+                <div class="col-sm-10">
+                    @Html.TextBox("txtPreco", produto.Preco, new { @class = "form-control"})
+                </div>
+            </div>
 
-            @Html.Label("Categoria do produto")
-            @Html.TextBox("txtCategoria", produto.Categoria)<br />
+            <div class="form-group">
 
-            <input type="submit" value="Salvar" />
+                @Html.Label("Categoria do produto", new { @class = "control-label col-sm-2" })
+                <div class="col-sm-10">
+                    @Html.TextBox("txtCategoria", produto.Categoria, new { @class = "form-control" })
+                </div>
+            </div>
 
-        }
-    </div>
-</body>
-</html>
+            <div class="form-group">
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <input type="submit" class="btn btn-success"value="Salvar" />
+                    </div>
+                </div>
+        </fieldset>
+    }
+</div>
