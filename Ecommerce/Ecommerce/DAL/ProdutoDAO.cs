@@ -33,10 +33,12 @@ namespace Ecommerce.DAL
         }
         #endregion
 
+        #region BuscarProdutoPorNome
         public static Produto BuscarProdutoPorNome(Produto produto)
         {
             return contexto.Produtos.FirstOrDefault(x => x.Nome.Equals(produto.Nome));
         }
+        #endregion
 
 
         #region RemoverProduto
