@@ -1,8 +1,8 @@
-﻿
+﻿@using Ecommerce.Models
+@model List<Produto>
+
 @{
     DateTime data = ViewBag.Data;
-    List<Ecommerce.Models.Produto> produtos = ViewBag.Produtos;
-
 }
 <div>
     <h1>Gerenciamento de Produtos</h1>
@@ -17,7 +17,7 @@
             <th>Remover</th>
         </tr>
 
-        @foreach (Ecommerce.Models.Produto Produtos in produtos)
+        @foreach (Produto Produtos in Model)
         {
             <tr class="table-active">
                 <td>@Produtos.Nome</td>
