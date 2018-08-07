@@ -24,8 +24,15 @@ namespace Ecommerce.Controllers
         [HttpPost]
         public ActionResult CadastrarProduto(Produto produto)
         {
+            if (ModelState.IsValid) { 
             ProdutoDAO.CadastrarProduto(produto);
             return RedirectToAction("Index", "Produto");
+
+            }
+            else
+            {
+                return View(produto);
+            }
         }
 
         public ActionResult RemoverProduto(int id)
