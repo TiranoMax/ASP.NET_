@@ -9,7 +9,7 @@ namespace Ecommerce.DAL
 {
     public class ProdutoDAO
     {
-       private static Context contexto = new Context();
+        private static Context contexto = new Context();
 
         #region Retornar Produtos
         public static List<Produto> RetornarProdutos()
@@ -21,9 +21,10 @@ namespace Ecommerce.DAL
         #region Cadastrar Produto
         public static bool CadastrarProduto(Produto produto)
         {
-            if(BuscarProdutoPorNome(produto) == null) { 
-            contexto.Produtos.Add(produto);
-            contexto.SaveChanges();
+            if (BuscarProdutoPorNome(produto) == null)
+            {
+                contexto.Produtos.Add(produto);
+                contexto.SaveChanges();
                 return true;
             }
             else
@@ -59,13 +60,14 @@ namespace Ecommerce.DAL
         #region AlterarProduto
         public static bool AlterarProduto(Produto produto)
         {
-            if(contexto.Produtos.FirstOrDefault(x => x.Nome.Equals(produto.Nome) && x.ProdutoId != produto.ProdutoId)==null){
+            if (contexto.Produtos.FirstOrDefault(x => x.Nome.Equals(produto.Nome) && x.ProdutoId != produto.ProdutoId) == null)
+            {
                 contexto.Entry(produto).State = EntityState.Modified;
                 contexto.SaveChanges();
                 return true;
             }
             return false;
-            
+
         }
         #endregion
     }
