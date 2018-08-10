@@ -8,7 +8,7 @@ namespace Ecommerce.Controllers
     public class CategoriaController : Controller
     {
         // GET: Categoria
-        public ActionResult Index()
+        public ActionResult ListarCategoria()
         {
             ViewBag.Data = DateTime.Now;
             return View(CategoriaDAO.RetornarCategorias());
