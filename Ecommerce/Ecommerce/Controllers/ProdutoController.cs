@@ -18,6 +18,7 @@ namespace Ecommerce.Controllers
 
         public ActionResult CadastrarProduto()
         {
+            ViewBag.Categorias = new SelectList(CategoriaDAO.RetornarCategorias(), "CategoriaId", "NomeCategoria");
             return View();
         }
 
