@@ -41,7 +41,7 @@ namespace Ecommerce.DAL
             contexto.SaveChanges();
         }
 
-        public static Categoria BuscarCategoria(int id)
+        public static Categoria BuscarCategoria(int? id)
         {
             return contexto.Categorias.Find(id);
         }
