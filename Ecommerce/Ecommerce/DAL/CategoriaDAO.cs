@@ -9,7 +9,7 @@ namespace Ecommerce.DAL
 {
     public class CategoriaDAO
     {
-        private static Context contexto = new Context();
+        private static Context contexto = SingletonContext.GetInstance();
 
         public static List<Categoria> RetornarCategorias()
         {
