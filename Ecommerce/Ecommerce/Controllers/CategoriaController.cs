@@ -10,6 +10,7 @@ namespace Ecommerce.Controllers
         // GET: Categoria
         public ActionResult Index()
         {
+            ViewBag.Data = DateTime.Now;
             return View(CategoriaDAO.RetornarCategorias());
         }
 
@@ -25,11 +26,11 @@ namespace Ecommerce.Controllers
             {
                 if (CategoriaDAO.CadastrarCategoria(categoria))
                 {
-                    return RedirectToAction("Index", "Produto"); //modificar
+                    return RedirectToAction("ListarCategoria", "Categoria"); //modificar
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Não é possivel adicionar uma categoria com um mesmo nome!");
+                    ModelState.AddModelError("", "Não é possivel adicionar uma categoria com o mesmo nome!");
                     return View(categoria);
                 }
             }
@@ -43,7 +44,7 @@ namespace Ecommerce.Controllers
         {
             CategoriaDAO.RemoverCategoria(id);
 
-            return RedirectToAction("Index", "Produto");
+            return RedirectToAction("ListarCategoria", "Categoria");
         }
 
 
@@ -65,7 +66,7 @@ namespace Ecommerce.Controllers
             {
                 if (CategoriaDAO.AlterarCategoria(produtoOriginal))
                 {
-                    return RedirectToAction("Index", "Produto");
+                    return RedirectToAction("ListarCategoria", "Categoria");
                 }
                 else
                 {
