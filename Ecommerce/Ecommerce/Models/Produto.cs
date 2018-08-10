@@ -24,7 +24,7 @@ namespace Ecommerce.Models
         public double Preco { get; set; }
 
         [Display(Name = "Categoria do Produto")]
-        public string Categoria { get; set; }
+        public Categoria Categoria { get; set; }
 
         public string Imagem { get; set; }
 
