@@ -34,10 +34,12 @@
             <div class="form-group">
                 @Html.LabelFor(Model => Model.Categoria, new { @class = "control-label col-sm-2" })
                 <div class="col-sm-10">
-                    @Html.TextBoxFor(Model => Model.Categoria, new { @class = "form-control", @placeholder = "Categoria do Produto" })
+                    @Html.DropDownList("Categorias", null, " -- Selecione -- ", new { @class = "form-control"})
                     @Html.ValidationMessageFor(model => model.Categoria, null, new { @class = "text-danger" })
                 </div>
             </div>
+
+
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <input type="submit" value="Cadastrar" class="btn btn-success" />
