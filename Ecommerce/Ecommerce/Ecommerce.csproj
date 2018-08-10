@@ -133,6 +133,7 @@
     <Content Include="Views\Produto\AlterarProduto.cshtml" />
     <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Views\_viewstart.cshtml" />
+    <Content Include="Views\Categoria\CadastrarCategoria.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -142,7 +143,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Categoria\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201807310104069_CriacaoBanco.resx">
