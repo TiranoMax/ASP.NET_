@@ -17,6 +17,9 @@
                     @Html.ActionLink("Cadastrar Produto", "CadastrarProduto", "Produto", null, new { @class = "nav-link" })
                     @* order do link mvc| Nome do link | Nome do arquivo pagina| referenciamento controller *@
                 </li>
+                <li class="nav-item active">
+                    @Html.ActionLink("Cadastrar Produto", "CadastrarCategoria", "Categoria", null, new { @class = "nav-link" })
+                </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" placeholder="Search" type="text">@* vai sair pois seram modificado para padrao asp*@
