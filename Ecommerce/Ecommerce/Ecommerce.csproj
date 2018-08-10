@@ -120,6 +120,10 @@
     <Compile Include="Migrations\201808100016153_CriacaoBancoCategoria.Designer.cs">
       <DependentUpon>201808100016153_CriacaoBancoCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808101128411_AddCategoriaTableProduto.cs" />
+    <Compile Include="Migrations\201808101128411_AddCategoriaTableProduto.Designer.cs">
+      <DependentUpon>201808101128411_AddCategoriaTableProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Context.cs" />
@@ -156,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808100016153_CriacaoBancoCategoria.resx">
       <DependentUpon>201808100016153_CriacaoBancoCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808101128411_AddCategoriaTableProduto.resx">
+      <DependentUpon>201808101128411_AddCategoriaTableProduto.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
