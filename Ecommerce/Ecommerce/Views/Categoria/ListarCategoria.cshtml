@@ -1,0 +1,33 @@
+﻿@using Ecommerce.Models
+@model List<Categoria>
+
+@{
+
+    DateTime data = ViewBag.Data;
+}
+
+<div>
+    <h1>Cadegorias Cadastradas</h1>
+
+    @Html.ActionLink("Cadastrar Categoria", "CadastrarCategoria", "Categoria", new { @class = "btn btn-outline-warning" })
+
+    <table class="table table-hover">
+        <tr class="table-default">
+            <th>Nome da Categoria</th>
+            <th>Descrição </th>
+        </tr>
+
+        @foreach (Categoria Categorias in Model)
+        {
+            <tr class="table-active">
+                <td>@Categorias.NomeCategoria</td>
+                <td>@Categorias.Descricao</td>
+                <td>@Html.ActionLink("Alterar", "AlterarCategoria", "Categoria", new { id = Categorias.CategoriaId }, new { @class = "btn btn-outline-info" })</td>
+                <td>@Html.ActionLink("Remover", "RemoverCategoria", "Categoria", new { id = Categorias.CategoriaId }, new { @class = "btn btn-outline-danger" })</td>
+            </tr>
+        }
+
+    </table>
+    <p>Dados atualizados às: <b>@data</b></p>
+</div>
+
