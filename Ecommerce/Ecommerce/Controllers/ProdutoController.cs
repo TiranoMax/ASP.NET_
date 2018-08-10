@@ -2,7 +2,9 @@
 using Ecommerce.Models;
 using System;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Ecommerce.Controllers
@@ -23,7 +25,7 @@ namespace Ecommerce.Controllers
         }
 
         [HttpPost]
-        public ActionResult CadastrarProduto(Produto produto, int? categorias) //? do lado de uma variavel ele significa q pode ser nulo
+        public ActionResult CadastrarProduto(Produto produto, int? categorias, HttpPostedFileBase fupImage) //? do lado de uma variavel ele significa q pode ser nulo
         {
             ViewBag.Categorias = new SelectList(CategoriaDAO.RetornarCategorias(), "CategoriaId", "NomeCategoria");
 
@@ -31,6 +33,18 @@ namespace Ecommerce.Controllers
             {
                 if (categorias != null)
                 {
+                    if (fupImage != null)
+                    {
+                        string nomeImagem = Path.GetFileName(fupImage.FileName);
+                        string caminho = Path.Combine(Server.MapPath("~/Images/"), nomeImagem);
+                        fupImage.SaveAs(caminho);
+                        produto.Imagem = nomeImagem;
+                    }
+                    else
+                    {
+                        produto.Imagem = "semImagem.jpg";
+                    }
+
                     produto.Categoria = CategoriaDAO.BuscarCategoria(categorias);
                     if (ProdutoDAO.CadastrarProduto(produto))
                     {
