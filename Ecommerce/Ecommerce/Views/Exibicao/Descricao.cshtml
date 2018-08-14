@@ -1,1 +1,29 @@
-﻿
+﻿@{
+    Ecommerce.Models.Produto
+    exibir = ViewBag.Mostrar;
+}
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 ">
+                <div style="text-align:center">
+                    <h3>@exibir.Nome</h3>
+                    <img src="~/Images/@exibir.Imagem" alt="Imagem do Produto" style="width:300px; height:300px" /><br />
+                </div>
+            </div>
+            <div class="col-lg-1 ">
+
+            </div>
+
+            <div class="col-lg-4 ">
+                <div style="text-align:center">
+                    <label>Descrição:</label><br />
+                    @exibir.Descricao
+                    <br />
+                    <br />
+                    <label>Preço R$: @exibir.Preco </label>
+                </div>
+            </div>
+        </div>
+    </div>

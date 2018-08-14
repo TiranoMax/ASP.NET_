@@ -144,6 +144,7 @@
     <Content Include="Views\Categoria\AlterarCategoria.cshtml" />
     <Content Include="Views\Categoria\ListarCategoria.cshtml" />
     <Content Include="Views\Exibicao\Exibicao.cshtml" />
+    <Content Include="Views\Exibicao\Descricao.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
