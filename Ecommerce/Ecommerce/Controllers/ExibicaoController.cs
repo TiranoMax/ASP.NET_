@@ -16,6 +16,7 @@ namespace Ecommerce.Controllers
         public ActionResult Exibicao()
         {
             return View(ProdutoDAO.RetornarProdutos());
+
         }
 
         public ActionResult Descricao(int id)
