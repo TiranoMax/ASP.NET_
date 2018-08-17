@@ -1,12 +1,29 @@
 ﻿@using Ecommerce.Models
 @model List<Produto>
+@{
+    List<Categoria> categorias = ViewBag.Categorias;
+}
+ 
 
-
-<div class="container-fluid" >
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    @Html.ActionLink("TODOS", "Exibicao", "Exibicao", new { CatId = "null" }, new { @class = "nav-link " })
+                </li>
+                @foreach (Categoria Cat in categorias)
+                {
+                    <li class="nav-item">
+                        @Html.ActionLink(Cat.NomeCategoria.ToUpper(), "Exibicao", "Exibicao", new { CatId = Cat.CategoriaId }, new { @class = "nav-link " })
+                    </li>
+                } 
+            </ul>
+        </div>
+    </div>
     <div class="row">
         @foreach (Produto Exib in Model)
         {
-
             <div class="col-lg-4 ">
                 <div style="text-align:center">
                     <img src="~/Images/@Exib.Imagem" alt="Imagem do Produto" style="width:150px; height:150px" /><br />
