@@ -151,6 +151,7 @@
     <Content Include="Views\Categoria\ListarCategoria.cshtml" />
     <Content Include="Views\Exibicao\Exibicao.cshtml" />
     <Content Include="Views\Exibicao\Descricao.cshtml" />
+    <Content Include="Views\Exibicao\CarrinhoCompras.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
