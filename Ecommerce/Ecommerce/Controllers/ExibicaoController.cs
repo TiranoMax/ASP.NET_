@@ -13,10 +13,24 @@ namespace Ecommerce.Controllers
         private static Context contexto = SingletonContext.GetInstance();
 
         // GET: Exibicao
-        public ActionResult Exibicao()
+        public ActionResult Exibicao(int? CatId)
         {
-            return View(ProdutoDAO.RetornarProdutos());
+            ViewBag.Categorias = CategoriaDAO.RetornarCategorias();
 
+            if (CatId == null)
+            {
+                return View(ProdutoDAO.RetornarProdutos());
+            }
+            else
+            {
+                return View(BuscarPorCategoria(CatId));
+            }
+
+        }
+
+        private static List<Produto> BuscarPorCategoria(int? id)
+        {
+            return contexto.Produtos.Include("Categoria").Where(x => x.Categoria.CategoriaId == id).ToList();
         }
 
         public ActionResult Descricao(int id)
