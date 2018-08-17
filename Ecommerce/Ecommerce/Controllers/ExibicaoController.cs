@@ -50,8 +50,13 @@ namespace Ecommerce.Controllers
                 Preco = Produto.Preco,
                 Data = DateTime.Now
             };
+            ItemVendaDAO.AdicionarAoCarrinho(itemVenda);
+            return RedirectToAction("CarrinhoCompras","Exibicao");
+        }
 
-            return RedirectToAction("CarrinhoCompras");
+        public ActionResult CarrinhoCompras()
+        {
+            return View(ItemVendaDAO.RetornarItens());
         }
 
     }
