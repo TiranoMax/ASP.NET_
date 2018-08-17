@@ -126,9 +126,14 @@
     <Compile Include="Migrations\201808101128411_AddCategoriaTableProduto.Designer.cs">
       <DependentUpon>201808101128411_AddCategoriaTableProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808171312591_ItemVenda.cs" />
+    <Compile Include="Migrations\201808171312591_ItemVenda.Designer.cs">
+      <DependentUpon>201808171312591_ItemVenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Context.cs" />
+    <Compile Include="Models\ItemVenda.cs" />
     <Compile Include="Models\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -168,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808101128411_AddCategoriaTableProduto.resx">
       <DependentUpon>201808101128411_AddCategoriaTableProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808171312591_ItemVenda.resx">
+      <DependentUpon>201808171312591_ItemVenda.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
