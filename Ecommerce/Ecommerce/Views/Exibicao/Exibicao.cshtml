@@ -3,7 +3,7 @@
 @{
     List<Categoria> categorias = ViewBag.Categorias;
 }
- 
+
 
 <div class="container-fluid">
     <div class="row">
@@ -17,7 +17,7 @@
                     <li class="nav-item">
                         @Html.ActionLink(Cat.NomeCategoria.ToUpper(), "Exibicao", "Exibicao", new { CatId = Cat.CategoriaId }, new { @class = "nav-link " })
                     </li>
-                } 
+                }
             </ul>
         </div>
     </div>
