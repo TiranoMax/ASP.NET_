@@ -29,6 +29,8 @@
                     <img src="~/Images/@Exib.Imagem" alt="Imagem do Produto" style="width:150px; height:150px" /><br />
                     <label>@Html.ActionLink(Exib.Nome, "Descricao", "Exibicao", new { id = Exib.ProdutoId }, new { @class = "text-info" })</label><br />
                     <label>R$: @Exib.Preco</label><br />
+                    @Html.ActionLink("Adicionar", "Adicionar ao carrinho", "Exibicao", new { id = Exib.ProdutoId }, new { @class = "btn- btn-success" })
+
                 </div>
             </div>
             <div class="col-lg-2">
