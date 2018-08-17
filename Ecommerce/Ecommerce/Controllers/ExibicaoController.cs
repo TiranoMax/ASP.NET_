@@ -38,5 +38,21 @@ namespace Ecommerce.Controllers
             ViewBag.Mostrar = ProdutoDAO.BuscarProduto(id);
             return View();
         }
+
+        public ActionResult AdicionarAoCarrinho(int id)
+        {
+            Produto Produto = ProdutoDAO.BuscarProduto(id);
+
+            ItemVenda itemVenda = new ItemVenda
+            {
+                Produto = Produto,
+                Qtde = 1,
+                Preco = Produto.Preco,
+                Data = DateTime.Now
+            };
+
+            return RedirectToAction("CarrinhoCompras");
+        }
+
     }
 }
