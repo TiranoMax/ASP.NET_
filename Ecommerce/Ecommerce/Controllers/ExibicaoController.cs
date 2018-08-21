@@ -5,13 +5,13 @@ using System.Web;
 using System.Web.Mvc;
 using Ecommerce.DAL;
 using Ecommerce.Models;
+using Ecommerce.Utils;
 
 namespace Ecommerce.Controllers
 {
     public class ExibicaoController : Controller
     {
-        private static Context contexto = SingletonContext.GetInstance();
-
+        
         // GET: Exibicao
         public ActionResult Exibicao(int? CatId)
         {
@@ -34,13 +34,8 @@ namespace Ecommerce.Controllers
             return View();
         }
 
-        
-
-
-
         public ActionResult AdicionarAoCarrinho(int id)
         {
-            Guid guid = Guid.NewGuid();
 
             Produto Produto = ProdutoDAO.BuscarProduto(id);
 
@@ -50,17 +45,17 @@ namespace Ecommerce.Controllers
                 Qtde = 1,
                 Preco = Produto.Preco,
                 Data = DateTime.Now,
-                CartId = guid.ToString()
+                CartId = Sessao.RetornarCarrinhoId()
 
             };
             ItemVendaDAO.AdicionarAoCarrinho(itemVenda);
-            return RedirectToAction("CarrinhoCompras","Exibicao");
+            return RedirectToAction("CarrinhoCompras");
         }
 
         #region Listar Vendas
         public ActionResult CarrinhoCompras()
         {
-            return View(ItemVendaDAO.RetornarItens());
+            return View(ItemVendaDAO.BuscarItensPorCartId(Sessao.RetornarCarrinhoId()));
         }
         #endregion
 
