@@ -29,5 +29,6 @@ namespace Ecommerce.Models
         [Display(Name = "Data de adicionamento")]
         public DateTime Data { get; set; }
 
+        public string CartId { get; set; }
     }
 }
