@@ -23,14 +23,9 @@ namespace Ecommerce.Controllers
             }
             else
             {
-                return View(BuscarPorCategoria(CatId));
+                return View(ProdutoDAO.BuscarPorCategoria(CatId));
             }
 
-        }
-
-        private static List<Produto> BuscarPorCategoria(int? id)
-        {
-            return contexto.Produtos.Include("Categoria").Where(x => x.Categoria.CategoriaId == id).ToList();
         }
 
         public ActionResult Descricao(int id)
@@ -39,8 +34,14 @@ namespace Ecommerce.Controllers
             return View();
         }
 
+        
+
+
+
         public ActionResult AdicionarAoCarrinho(int id)
         {
+            Guid guid = Guid.NewGuid();
+
             Produto Produto = ProdutoDAO.BuscarProduto(id);
 
             ItemVenda itemVenda = new ItemVenda
@@ -48,16 +49,20 @@ namespace Ecommerce.Controllers
                 Produto = Produto,
                 Qtde = 1,
                 Preco = Produto.Preco,
-                Data = DateTime.Now
+                Data = DateTime.Now,
+                CartId = guid.ToString()
+
             };
             ItemVendaDAO.AdicionarAoCarrinho(itemVenda);
             return RedirectToAction("CarrinhoCompras","Exibicao");
         }
 
+        #region Listar Vendas
         public ActionResult CarrinhoCompras()
         {
             return View(ItemVendaDAO.RetornarItens());
         }
+        #endregion
 
     }
 }
