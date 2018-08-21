@@ -34,6 +34,14 @@ namespace Ecommerce.DAL
         }
         #endregion
 
+        #region Buscar produto por categoria
+        public static List<Produto> BuscarPorCategoria(int? id)
+        {
+            return contexto.Produtos.Include("Categoria").Where(x => x.Categoria.CategoriaId == id).ToList();
+        }
+        #endregion
+
+
         #region BuscarProdutoPorNome
         public static Produto BuscarProdutoPorNome(Produto produto)
         {
