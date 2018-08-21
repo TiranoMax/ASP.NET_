@@ -21,7 +21,7 @@ namespace Ecommerce.DAL
         #region Retornar ItensVenda
         public static List<ItemVenda> BuscarItensPorCartId(String CartId)
         { 
-            return contexto.ItemVenda.Where(x => x.CartId.Equals(CartId)).ToList();
+            return contexto.ItemVenda.Include("Produto").Where(x => x.CartId.Equals(CartId)).ToList();
         }
         #endregion
 
