@@ -11,7 +11,7 @@ namespace Ecommerce.Controllers
 {
     public class ExibicaoController : Controller
     {
-        
+
         // GET: Exibicao
         public ActionResult Exibicao(int? CatId)
         {
@@ -36,7 +36,6 @@ namespace Ecommerce.Controllers
 
         public ActionResult AdicionarAoCarrinho(int id)
         {
-
             Produto Produto = ProdutoDAO.BuscarProduto(id);
 
             ItemVenda itemVenda = new ItemVenda
@@ -46,7 +45,6 @@ namespace Ecommerce.Controllers
                 Preco = Produto.Preco,
                 Data = DateTime.Now,
                 CartId = Sessao.RetornarCarrinhoId()
-
             };
             ItemVendaDAO.AdicionarAoCarrinho(itemVenda);
             return RedirectToAction("CarrinhoCompras");
@@ -55,9 +53,28 @@ namespace Ecommerce.Controllers
         #region Listar Vendas
         public ActionResult CarrinhoCompras()
         {
-            return View(ItemVendaDAO.BuscarItensPorCartId(Sessao.RetornarCarrinhoId()));
+            ViewBag.Total = ItemVendaDAO.TotalCart();
+            return View(ItemVendaDAO.BuscarItensPorCartId());
         }
         #endregion
+
+        public ActionResult RemovendoItem(int id)
+        {
+            ItemVendaDAO.RemoverDoCarrinho(id);
+            return RedirectToAction("CarrinhoCompras", "Exibicao");
+        }
+
+        public ActionResult AdicionarItem(int id)
+        {
+            ItemVendaDAO.AumentarItemCart(id);
+            return RedirectToAction("CarrinhoCompras", "Exibicao");
+        }
+
+        public ActionResult DiminuirItem(int id)
+        {
+            ItemVendaDAO.DiminuirItemCart(id);
+            return RedirectToAction("CarrinhoCompras", "Exibicao");
+        }
 
     }
 }
