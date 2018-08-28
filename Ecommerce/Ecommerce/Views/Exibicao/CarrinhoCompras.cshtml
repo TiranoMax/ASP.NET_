@@ -1,5 +1,8 @@
 ﻿@using Ecommerce.Models
 @model List<ItemVenda>
+@{
+    double total = ViewBag.Total;
+}
 
 
 
@@ -16,21 +19,31 @@
 
     @foreach (ItemVenda item in Model)
     {
-    <tr>
-        <td><img src="~/Images/@item.Produto.Imagem" alt="Imagem do Produto" style="width:100px; height:100px" /></td>        
-        
-        <td>@item.Produto.Nome</td>
-        
-        <td>@item.Qtde</td>
+        <tr>
+            <td><img src="~/Images/@item.Produto.Imagem" alt="Imagem do Produto" style="width:100px; height:100px" /></td>
 
-        <td>@item.Preco.ToString("C2")</td>
-        @{ 
-            double subTotal = item.Qtde * item.Preco;
-        }
+            <td>@item.Produto.Nome</td>
 
-        <td>@subTotal.ToString("C2")</td>
+            <td>
+                @Html.ActionLink("-", "DiminuirItem", "Exibicao", new { id = item.ItemVendaId }, new { @class = "btn btn-danger" })
+                @item.Qtde
+                @Html.ActionLink("+", "AdicionarItem", "Exibicao", new { id = item.ItemVendaId }, new { @class = "btn btn-success" })
 
-    </tr>
+                <p> @Html.ActionLink("Remover", "RemovendoItem", "Exibicao", new { id = item.ItemVendaId }, new { @class = "text-danger" })</p>
+            </td>
+
+            <td>@item.Preco.ToString("C2")</td>
+            @{
+                double subTotal = item.Qtde * item.Preco;
+            }
+
+            <td>@subTotal.ToString("C2")</td>
+
+        </tr>
     }
 
+
 </table>
+<div class="card text-white bg-success mb-3" style="max-width: 20%;">
+    <div class="card-header"><b>Total: </b> @total.ToString("C2")</div>
+</div>
