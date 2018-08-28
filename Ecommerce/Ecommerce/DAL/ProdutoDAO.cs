@@ -41,7 +41,6 @@ namespace Ecommerce.DAL
         }
         #endregion
 
-
         #region BuscarProdutoPorNome
         public static Produto BuscarProdutoPorNome(Produto produto)
         {
