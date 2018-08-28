@@ -34,16 +34,20 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a href="~/Exibicao/CarrinhoCompras" class="btn btn-secondary my-2 my-sm-0 ">
-                        Qtde Itens
-                        <span>
-                            @ItemVendaDAO.QtdeItensCart()
-                        </span>
-                        <br />
+
                         @if (ItemVendaDAO.TotalCart() == 0)
                         {
+                            <span>
+                                Carrinho
+                            </span>
                         }
                         else
                         {
+
+                            <span>
+                                Qtde Itens @ItemVendaDAO.QtdeItensCart()
+                            </span>
+                            <br />
                             <span>
                                 Valor Total  @ItemVendaDAO.TotalCart().ToString("C2")
                             </span>
