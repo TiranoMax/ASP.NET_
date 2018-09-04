@@ -102,9 +102,11 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\CompraController.cs" />
     <Compile Include="Controllers\ExibicaoController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="DAL\CategoriaDAO.cs" />
+    <Compile Include="DAL\CompraDAO.cs" />
     <Compile Include="DAL\ItemVendaDAO.cs" />
     <Compile Include="DAL\ProdutoDAO.cs" />
     <Compile Include="DAL\SingletonContext.cs" />
@@ -135,8 +137,13 @@
     <Compile Include="Migrations\201808211133200_AddCarrinhoIdItemVenda.Designer.cs">
       <DependentUpon>201808211133200_AddCarrinhoIdItemVenda.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808300054506_AtualizadoTableCompra.cs" />
+    <Compile Include="Migrations\201808300054506_AtualizadoTableCompra.Designer.cs">
+      <DependentUpon>201808300054506_AtualizadoTableCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
+    <Compile Include="Models\Compra.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\ItemVenda.cs" />
     <Compile Include="Models\Produto.cs" />
@@ -157,6 +164,7 @@
     <Content Include="Views\Exibicao\Exibicao.cshtml" />
     <Content Include="Views\Exibicao\Descricao.cshtml" />
     <Content Include="Views\Exibicao\CarrinhoCompras.cshtml" />
+    <Content Include="Views\Exibicao\FinalizarCompra.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -186,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808211133200_AddCarrinhoIdItemVenda.resx">
       <DependentUpon>201808211133200_AddCarrinhoIdItemVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808300054506_AtualizadoTableCompra.resx">
+      <DependentUpon>201808300054506_AtualizadoTableCompra.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -99,5 +99,12 @@ namespace Ecommerce.DAL
         }
         #endregion 
 
+        public static void RemoverDoCarrinhoTotal(int id)
+        {
+            ItemVenda item = contexto.ItemVenda.Find(id);
+            contexto.ItemVenda.Remove(item);
+
+            contexto.SaveChanges();
+        }
     }
 }
