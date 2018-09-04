@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Ecommerce.DAL;
 using Ecommerce.Models;
 
 namespace Ecommerce.Controllers
@@ -16,7 +17,7 @@ namespace Ecommerce.Controllers
        
         public ActionResult Index()
         {
-            return View(db.Usuarios.ToList());
+            return View(UsuarioDAO.RetornarUsuarios());
         }
         
 
@@ -31,11 +32,13 @@ namespace Ecommerce.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Usuarios.Add(usuario);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (UsuarioDAO.CadastrarUsuario(usuario))
+                {
+                    return RedirectToAction("Index","Usuario");
+                }
+                ModelState.AddModelError("", "Esse usuário já existe!");
+                return View(usuario);                
             }
-
             return View(usuario);
         }
     }
