@@ -141,12 +141,17 @@
     <Compile Include="Migrations\201808300054506_AtualizadoTableCompra.Designer.cs">
       <DependentUpon>201808300054506_AtualizadoTableCompra.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809041141343_addTableUsuario.cs" />
+    <Compile Include="Migrations\201809041141343_addTableUsuario.Designer.cs">
+      <DependentUpon>201809041141343_addTableUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Compra.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\ItemVenda.cs" />
     <Compile Include="Models\Produto.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\Sessao.cs" />
   </ItemGroup>
@@ -197,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808300054506_AtualizadoTableCompra.resx">
       <DependentUpon>201808300054506_AtualizadoTableCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809041141343_addTableUsuario.resx">
+      <DependentUpon>201809041141343_addTableUsuario.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
