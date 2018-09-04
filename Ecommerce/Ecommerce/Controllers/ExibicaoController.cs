@@ -76,5 +76,17 @@ namespace Ecommerce.Controllers
             return RedirectToAction("CarrinhoCompras", "Exibicao");
         }
 
+        public ActionResult ResumoCompra()
+        {
+            ViewBag.ItemLista = ItemVendaDAO.BuscarItensPorCartId();
+            return View();
+        }
+
+        public ActionResult FinalizarCompra()
+        {
+            ViewBag.Total = ItemVendaDAO.TotalCart();
+            ViewBag.ItemVenda = ItemVendaDAO.BuscarItensPorCartId();
+            return View();
+        }
     }
 }
