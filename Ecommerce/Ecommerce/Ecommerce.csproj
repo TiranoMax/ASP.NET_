@@ -105,6 +105,7 @@
     <Compile Include="Controllers\CompraController.cs" />
     <Compile Include="Controllers\ExibicaoController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="DAL\CategoriaDAO.cs" />
     <Compile Include="DAL\CompraDAO.cs" />
     <Compile Include="DAL\ItemVendaDAO.cs" />
@@ -170,6 +171,8 @@
     <Content Include="Views\Exibicao\Descricao.cshtml" />
     <Content Include="Views\Exibicao\CarrinhoCompras.cshtml" />
     <Content Include="Views\Exibicao\FinalizarCompra.cshtml" />
+    <Content Include="Views\Usuario\Create.cshtml" />
+    <Content Include="Views\Usuario\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
