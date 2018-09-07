@@ -56,6 +56,20 @@
 
                     </a>
                 </li>
+
+                @if (!Request.IsAuthenticated)
+                {
+                    <li class="nav-item active">
+                        @Html.ActionLink("Login", "Login", "Usuario", null, new { @class = "nav-link" })
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item active">
+                        @Html.ActionLink("Logout", "Logout", "Usuario", null, new { @class = "nav-link" })
+                    </li>
+                }
+
             </ul>
 
         </div>
