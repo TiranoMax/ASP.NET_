@@ -9,8 +9,10 @@ using System.Web.Mvc;
 
 namespace Ecommerce.Controllers
 {
+    [Authorize]
     public class ProdutoController : Controller
     {
+        
         // GET: Produto
         public ActionResult Index()
         {
