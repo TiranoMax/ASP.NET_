@@ -32,8 +32,7 @@ namespace Project_DisKWeb.DAL
             return ctx.Produtos.Find(Id);
         }
         #endregion
-
-
+        
         #region Alterar Produto
         public static bool AlterProduto(Produto produto)
         {
@@ -47,6 +46,13 @@ namespace Project_DisKWeb.DAL
         }
         #endregion
 
+        #region Excluir Produto
+        public static void DeleteProduto(int Id)
+        {
+            ctx.Produtos.Remove(ProdutoDAO.SearchProdutoByID(Id));
+            ctx.SaveChanges();
+        }
+        #endregion
 
     }
 }
