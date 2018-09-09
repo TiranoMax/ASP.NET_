@@ -1,6 +1,7 @@
 ﻿using Project_DisKWeb.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -29,6 +30,20 @@ namespace Project_DisKWeb.DAL
         public static Produto SearchProdutoByID(int Id)
         {
             return ctx.Produtos.Find(Id);
+        }
+        #endregion
+
+
+        #region Alterar Produto
+        public static bool AlterProduto(Produto produto)
+        {
+            if(ctx.Produtos.FirstOrDefault(x => x.Nome.Equals(produto.Nome) && x.ProdutoId.Equals(produto.ProdutoId)) == null)
+            {
+                ctx.Entry(produto).State = EntityState.Modified;
+                ctx.SaveChanges();
+                return true;
+            }
+            return false;
         }
         #endregion
 
