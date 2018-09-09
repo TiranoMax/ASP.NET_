@@ -25,5 +25,13 @@ namespace Project_DisKWeb.DAL
         }
         #endregion
 
+        #region Busca Produto pelo ID 
+        public static Produto SearchProdutoByID(int Id)
+        {
+            return ctx.Produtos.Find(Id);
+        }
+        #endregion
+
+
     }
 }
