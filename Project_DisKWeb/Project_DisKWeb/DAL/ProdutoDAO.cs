@@ -17,7 +17,13 @@ namespace Project_DisKWeb.DAL
         }
         #endregion
 
-        
+        #region  Cadastra Produto
+        public static void CadProduto(Produto produto)
+        {
+            ctx.Produtos.Add(produto);
+            ctx.SaveChanges();
+        }
+        #endregion
 
     }
 }
