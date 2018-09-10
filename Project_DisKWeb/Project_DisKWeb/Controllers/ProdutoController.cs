@@ -13,19 +13,21 @@ namespace Project_DisKWeb.Controllers
 {
     public class ProdutoController : Controller
     {
-       
+        #region Index
         public ActionResult Index()
         {
             return View(ProdutoDAO.ListProduto());
         }
+        #endregion
 
-        // GET: Produto/Create
+        #region Chamada View CadProduto
         public ActionResult CadProduto()
         {
             return View();
         }
+        #endregion
 
-      
+        #region CadProduto
         [HttpPost]        
         public ActionResult CadProduto([Bind(Include = "ProdutoId,Nome,Categoria,Ano_Lancamento,Autor,Descricao,QTDE_Estoque,Preco_Venda,Preco_Aluguel,Img")] Produto produto)
         {
@@ -40,42 +42,30 @@ namespace Project_DisKWeb.Controllers
                 return View(produto);
             }
         }
+        #endregion
+
+        #region Chamada View EditProduto
+        public ActionResult EditProduto(int? id)
+        {
+            return View(); 
+        }
+        #endregion
 
 
+        #region EditProduto
+        public ActionResult EditProduto([Bind(Include = "ProdutoId,Nome,Categoria,Ano_Lancamento,Autor,Descricao,QTDE_Estoque,Preco_Venda,Preco_Aluguel,Img")] Produto produto)
+        {
+            return View();
+        }
+        #endregion
 
+        #region Chamada Delete
+        public ActionResult Delete(int id)
+        {
+            ProdutoDAO.DeleteProduto(id);
+            return RedirectToAction("Index", "Produto");
+        }
+        #endregion
 
-        //// GET: Produto/Edit/5
-        //public ActionResult Edit(int? id)
-        //{
-            
-        //}
-
-       
-        //[HttpPost]
-        
-        //public ActionResult Edit([Bind(Include = "ProdutoId,Nome,Categoria,Ano_Lancamento,Autor,Descricao,QTDE_Estoque,Preco_Venda,Preco_Aluguel,Img")] Produto produto)
-        //{
-            
-        //}
-
-        //// GET: Produto/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        
-        //    Produto produto = db.Produtos.Find(id);
-          
-        //}
-
-        //// POST: Produto/Delete/5
-        //[HttpPost]        
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    Produto produto = db.Produtos.Find(id);
-        //    db.Produtos.Remove(produto);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
-
-       
     }
 }
