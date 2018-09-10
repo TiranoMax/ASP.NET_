@@ -130,6 +130,10 @@
     <Compile Include="Migrations\201809071748202_CreateTableProduto.Designer.cs">
       <DependentUpon>201809071748202_CreateTableProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809101903309_AlteradoTableAddAnotationProduto.cs" />
+    <Compile Include="Migrations\201809101903309_AlteradoTableAddAnotationProduto.Designer.cs">
+      <DependentUpon>201809101903309_AlteradoTableAddAnotationProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\Produto.cs" />
@@ -140,7 +144,7 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Produto\Create.cshtml" />
+    <Content Include="Views\Produto\CadProduto.cshtml" />
     <Content Include="Views\Produto\Delete.cshtml" />
     <Content Include="Views\Produto\Details.cshtml" />
     <Content Include="Views\Produto\Edit.cshtml" />
@@ -159,6 +163,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809071748202_CreateTableProduto.resx">
       <DependentUpon>201809071748202_CreateTableProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809101903309_AlteradoTableAddAnotationProduto.resx">
+      <DependentUpon>201809101903309_AlteradoTableAddAnotationProduto.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

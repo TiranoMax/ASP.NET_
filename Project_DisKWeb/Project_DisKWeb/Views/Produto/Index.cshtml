@@ -5,10 +5,10 @@
 }
 
 <br />
-<h2>Index</h2>
+<h2>Produtos Cadastrados</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Cadastrar novo produto", "CadProduto")
 </p>
 <table class="table table-hover">
     <tr>
@@ -72,8 +72,7 @@
             @Html.DisplayFor(modelItem => item.Img)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProdutoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProdutoId }) |
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProdutoId }) |            
             @Html.ActionLink("Delete", "Delete", new { id=item.ProdutoId })
         </td>
     </tr>
