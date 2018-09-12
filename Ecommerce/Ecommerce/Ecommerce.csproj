@@ -51,6 +51,9 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -147,6 +150,10 @@
     <Compile Include="Migrations\201809041141343_addTableUsuario.Designer.cs">
       <DependentUpon>201809041141343_addTableUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809111223090_UpdateTableUsuario.cs" />
+    <Compile Include="Migrations\201809111223090_UpdateTableUsuario.Designer.cs">
+      <DependentUpon>201809111223090_UpdateTableUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Compra.cs" />
@@ -210,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809041141343_addTableUsuario.resx">
       <DependentUpon>201809041141343_addTableUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809111223090_UpdateTableUsuario.resx">
+      <DependentUpon>201809111223090_UpdateTableUsuario.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
