@@ -21,7 +21,7 @@ namespace Project_DisKWeb.Models
         public string Categoria { get; set; }
 
         [Display(Name = "Ano de Lançamento")]
-        public DateTime Ano_Lancamento { get; set; }
+        public int Ano_Lancamento { get; set; }
 
         [Required(ErrorMessage = "Campo Obrigatório!")]
         [MaxLength(50, ErrorMessage = "O campo deve conter no máximo 50 caracteres")]
@@ -32,16 +32,21 @@ namespace Project_DisKWeb.Models
         [DataType(DataType.MultilineText)]
         public string Descricao { get; set; }
 
-        [Display(Name = "Quantidade em estoque")]
+        [Display(Name = "Quantidade em estoque para compra")]
         public int QTDE_Estoque { get; set; }
 
         [Required(ErrorMessage = "Campo Obrigatório")]
         [Display(Name = "Preço de venda")]
-        public double Preco_Venda { get; set; }
+        [DataType(DataType.Currency)]
+        public decimal Preco_Venda { get; set; }
+
+        [Display(Name = "Quantidade em estoque para aluguel")]
+        public int QTDE_Estoque_aluguel { get; set; }
 
         [Required(ErrorMessage = "Campo Obrigatório")]
         [Display(Name = "Preço de Aluguel")]
-        public double Preco_Aluguel { get; set; }
+        [DataType(DataType.Currency)]
+        public decimal Preco_Aluguel { get; set; }
 
         public string Img { get; set; }
     }

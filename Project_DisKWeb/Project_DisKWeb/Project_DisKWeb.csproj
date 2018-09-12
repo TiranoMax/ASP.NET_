@@ -126,13 +126,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809071748202_CreateTableProduto.cs" />
-    <Compile Include="Migrations\201809071748202_CreateTableProduto.Designer.cs">
-      <DependentUpon>201809071748202_CreateTableProduto.cs</DependentUpon>
+    <Compile Include="Migrations\201809112332386_AlterTableProdutoModifyValuesColumm.cs" />
+    <Compile Include="Migrations\201809112332386_AlterTableProdutoModifyValuesColumm.Designer.cs">
+      <DependentUpon>201809112332386_AlterTableProdutoModifyValuesColumm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201809101903309_AlteradoTableAddAnotationProduto.cs" />
-    <Compile Include="Migrations\201809101903309_AlteradoTableAddAnotationProduto.Designer.cs">
-      <DependentUpon>201809101903309_AlteradoTableAddAnotationProduto.cs</DependentUpon>
+    <Compile Include="Migrations\201809112359093_AlterTableProdutoModifyValuesColumm1.cs" />
+    <Compile Include="Migrations\201809112359093_AlterTableProdutoModifyValuesColumm1.Designer.cs">
+      <DependentUpon>201809112359093_AlterTableProdutoModifyValuesColumm1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context.cs" />
@@ -159,11 +159,11 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809071748202_CreateTableProduto.resx">
-      <DependentUpon>201809071748202_CreateTableProduto.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809112332386_AlterTableProdutoModifyValuesColumm.resx">
+      <DependentUpon>201809112332386_AlterTableProdutoModifyValuesColumm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809101903309_AlteradoTableAddAnotationProduto.resx">
-      <DependentUpon>201809101903309_AlteradoTableAddAnotationProduto.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809112359093_AlterTableProdutoModifyValuesColumm1.resx">
+      <DependentUpon>201809112359093_AlterTableProdutoModifyValuesColumm1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

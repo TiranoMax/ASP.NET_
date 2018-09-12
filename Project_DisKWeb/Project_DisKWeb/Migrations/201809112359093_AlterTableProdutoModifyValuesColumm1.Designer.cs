@@ -7,13 +7,13 @@ namespace Project_DisKWeb.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AlteradoTableAddAnotationProduto : IMigrationMetadata
+    public sealed partial class AlterTableProdutoModifyValuesColumm1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AlteradoTableAddAnotationProduto));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AlterTableProdutoModifyValuesColumm1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201809101903309_AlteradoTableAddAnotationProduto"; }
+            get { return "201809112359093_AlterTableProdutoModifyValuesColumm1"; }
         }
         
         string IMigrationMetadata.Source

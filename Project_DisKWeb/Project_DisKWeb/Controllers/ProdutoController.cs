@@ -29,10 +29,11 @@ namespace Project_DisKWeb.Controllers
 
         #region CadProduto
         [HttpPost]        
-        public ActionResult CadProduto([Bind(Include = "ProdutoId,Nome,Categoria,Ano_Lancamento,Autor,Descricao,QTDE_Estoque,Preco_Venda,Preco_Aluguel,Img")] Produto produto)
+        public ActionResult CadProduto([Bind(Include = "ProdutoId,Nome,Categoria,Ano_Lancamento,Autor,Descricao,QTDE_Estoque,Preco_Venda,QTDE_Estoque_aluguel,Preco_Aluguel,Img")] Produto produto)
         {
             if (ModelState.IsValid)
             {
+                
                 ProdutoDAO.CadProduto(produto);
                 
                 return RedirectToAction("Index", "Produto"); 
@@ -45,17 +46,18 @@ namespace Project_DisKWeb.Controllers
         #endregion
 
         #region Chamada View EditProduto
-        public ActionResult EditProduto(int? id)
+        public ActionResult EditProduto(int id)
         {
-            return View(); 
+            return View(ProdutoDAO.SearchProdutoByID(id)); 
         }
         #endregion
 
 
         #region EditProduto
+        [HttpPost]
         public ActionResult EditProduto([Bind(Include = "ProdutoId,Nome,Categoria,Ano_Lancamento,Autor,Descricao,QTDE_Estoque,Preco_Venda,Preco_Aluguel,Img")] Produto produto)
         {
-            return View();
+            return View(); 
         }
         #endregion
 
