@@ -76,7 +76,7 @@
             @Html.DisplayFor(modelItem => item.Preco_Aluguel)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Img)
+        <img src="~/Imagem/@item.Img" alt="Imagem do Produto" style="width:100px; height:100px" />
         </td>
         <td>
             @Html.ActionLink("Editar", "EditProduto", new { id = item.ProdutoId }, new { @class = "btn btn-warning " })

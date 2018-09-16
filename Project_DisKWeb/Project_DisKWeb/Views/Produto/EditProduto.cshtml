@@ -1,13 +1,13 @@
 ﻿@model Project_DisKWeb.Models.Produto
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edição de produto";
 }
 
-<h2>Edit</h2>
+<h2>Edição de Produto</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("EditProduto", "Produto", FormMethod.Post, new { @class = "form-horizontal ", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -66,15 +66,15 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Preco_Venda, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Preco_Venda, htmlAttributes: new { @class = "control-label col-md-3" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Preco_Venda, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Preco_Venda, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Preco_Venda, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.QTDE_Estoque_aluguel, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.QTDE_Estoque_aluguel, htmlAttributes: new { @class = "control-label col-md-3" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.QTDE_Estoque_aluguel, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.QTDE_Estoque_aluguel, "", new { @class = "text-danger" })
@@ -82,33 +82,29 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Preco_Aluguel, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Preco_Aluguel, htmlAttributes: new { @class = "control-label col-md-3" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Preco_Aluguel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Preco_Aluguel, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Preco_Aluguel, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Img, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Img, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Img, "", new { @class = "text-danger" })
+        <div>
+            @Html.Label("Imagem do Produto", new { @class = "control-label col-sm-2" })
+            <div class="col-md-4">
+                <input type="file" name="fupImagem" class="form-control-file">
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Alterar" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    <div style="text-align:center">
+        @Html.ActionLink("Retornar", "Index", "", new { @class = "text-info " })
+    </div>
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -29,11 +30,22 @@ namespace Project_DisKWeb.Controllers
 
         #region CadProduto
         [HttpPost]        
-        public ActionResult CadProduto([Bind(Include = "ProdutoId,Nome,Categoria,Ano_Lancamento,Autor,Descricao,QTDE_Estoque,Preco_Venda,QTDE_Estoque_aluguel,Preco_Aluguel,Img")] Produto produto)
+        public ActionResult CadProduto(Produto produto, HttpPostedFileBase fupImg)
         {
             if (ModelState.IsValid)
             {
-                
+                if (fupImg != null)
+                {
+                    string nomeImagem = Path.GetFileName(fupImg.FileName);
+                    string caminho = Path.Combine(Server.MapPath("~/Imagem/"), nomeImagem);
+                    fupImg.SaveAs(caminho);
+                    produto.Img = nomeImagem;
+                }
+                else
+                {
+                    produto.Img = "SemImagem.gif";
+                }
+
                 ProdutoDAO.CadProduto(produto);
                 
                 return RedirectToAction("Index", "Produto"); 
@@ -55,9 +67,40 @@ namespace Project_DisKWeb.Controllers
 
         #region EditProduto
         [HttpPost]
-        public ActionResult EditProduto([Bind(Include = "ProdutoId,Nome,Categoria,Ano_Lancamento,Autor,Descricao,QTDE_Estoque,Preco_Venda,Preco_Aluguel,Img")] Produto produto)
+        public ActionResult EditProduto(Produto produtoAlterado , HttpPostedFileBase fupImagem)
         {
-            return View(); 
+
+            Produto produtoOri = ProdutoDAO.SearchProdutoByID(produtoAlterado.ProdutoId);
+
+            produtoOri.Nome = produtoAlterado.Nome;
+            produtoOri.Categoria = produtoAlterado.Categoria;
+            produtoOri.Ano_Lancamento = produtoAlterado.Ano_Lancamento;
+            produtoOri.Autor = produtoAlterado.Autor;
+            produtoOri.Descricao = produtoAlterado.Descricao;
+            produtoOri.QTDE_Estoque = produtoAlterado.QTDE_Estoque;
+            produtoOri.Preco_Venda = produtoAlterado.Preco_Venda;
+            produtoOri.QTDE_Estoque_aluguel = produtoAlterado.QTDE_Estoque_aluguel;
+            produtoOri.Preco_Aluguel = produtoAlterado.Preco_Aluguel;
+
+            
+            if (ModelState.IsValid)
+            {
+                if (fupImagem != null)
+                {
+                    string nomeImagem = Path.GetFileName(fupImagem.FileName);
+                    string caminho = Path.Combine(Server.MapPath("~/Imagem/"), nomeImagem);
+                    fupImagem.SaveAs(caminho);
+                    produtoOri.Img = nomeImagem;
+                }
+                
+                if (ProdutoDAO.AlterProduto(produtoOri))
+                {
+                    return RedirectToAction("Index", "Produto");
+                }
+
+            }
+            return View(produtoOri);     
+           
         }
         #endregion
 

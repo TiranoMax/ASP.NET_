@@ -37,16 +37,14 @@ namespace Project_DisKWeb.Models
 
         [Required(ErrorMessage = "Campo Obrigatório")]
         [Display(Name = "Preço de venda")]
-        [DataType(DataType.Currency)]
-        public decimal Preco_Venda { get; set; }
+        public double Preco_Venda { get; set; }
 
         [Display(Name = "Quantidade em estoque para aluguel")]
         public int QTDE_Estoque_aluguel { get; set; }
 
         [Required(ErrorMessage = "Campo Obrigatório")]
         [Display(Name = "Preço de Aluguel")]
-        [DataType(DataType.Currency)]
-        public decimal Preco_Aluguel { get; set; }
+        public double Preco_Aluguel { get; set; }
 
         public string Img { get; set; }
     }

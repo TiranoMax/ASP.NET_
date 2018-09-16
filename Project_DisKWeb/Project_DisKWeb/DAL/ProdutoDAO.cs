@@ -36,7 +36,7 @@ namespace Project_DisKWeb.DAL
         #region Alterar Produto
         public static bool AlterProduto(Produto produto)
         {
-            if(ctx.Produtos.FirstOrDefault(x => x.Nome.Equals(produto.Nome) && x.ProdutoId.Equals(produto.ProdutoId)) == null)
+            if(ctx.Produtos.FirstOrDefault(x => x.ProdutoId.Equals(produto.ProdutoId)) != null)
             {
                 ctx.Entry(produto).State = EntityState.Modified;
                 ctx.SaveChanges();
