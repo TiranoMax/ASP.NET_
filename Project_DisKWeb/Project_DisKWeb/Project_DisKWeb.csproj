@@ -166,11 +166,11 @@
     <Content Include="Views\Produto\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Produto\CadProduto.cshtml" />
-    <Content Include="Views\Usuarios\Create.cshtml" />
+    <Content Include="Views\Usuarios\CadUser.cshtml" />
     <Content Include="Views\Usuarios\Delete.cshtml" />
     <Content Include="Views\Usuarios\Details.cshtml" />
-    <Content Include="Views\Usuarios\Edit.cshtml" />
-    <Content Include="Views\Usuarios\Index.cshtml" />
+    <Content Include="Views\Usuarios\EditUser.cshtml" />
+    <Content Include="Views\Usuarios\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
