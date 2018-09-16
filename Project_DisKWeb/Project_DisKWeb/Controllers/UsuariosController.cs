@@ -15,9 +15,9 @@ namespace Project_DisKWeb.Controllers
         private Context db = new Context();
 
         // GET: Usuarios
-        public ActionResult Index()
+        public ActionResult Login()
         {
-            return View(db.Usuarios.ToList());
+            return View();
         }
 
         // GET: Usuarios/Details/5
