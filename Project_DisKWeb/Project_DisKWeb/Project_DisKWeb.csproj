@@ -144,10 +144,15 @@
     <Compile Include="Migrations\201809160555451_CreateTableEndereco.Designer.cs">
       <DependentUpon>201809160555451_CreateTableEndereco.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809160604014_CreateTableUsuario.cs" />
+    <Compile Include="Migrations\201809160604014_CreateTableUsuario.Designer.cs">
+      <DependentUpon>201809160604014_CreateTableUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\Produto.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809160555451_CreateTableEndereco.resx">
       <DependentUpon>201809160555451_CreateTableEndereco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809160604014_CreateTableUsuario.resx">
+      <DependentUpon>201809160604014_CreateTableUsuario.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
