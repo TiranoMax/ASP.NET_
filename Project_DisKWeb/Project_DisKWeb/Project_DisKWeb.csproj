@@ -126,6 +126,7 @@
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="DAL\ProdutoDAO.cs" />
     <Compile Include="DAL\Singleton.cs" />
+    <Compile Include="DAL\UsuarioDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -148,6 +149,10 @@
     <Compile Include="Migrations\201809160604014_CreateTableUsuario.cs" />
     <Compile Include="Migrations\201809160604014_CreateTableUsuario.Designer.cs">
       <DependentUpon>201809160604014_CreateTableUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809182312269_AlteradoBancoUsuarioEndereco.cs" />
+    <Compile Include="Migrations\201809182312269_AlteradoBancoUsuarioEndereco.Designer.cs">
+      <DependentUpon>201809182312269_AlteradoBancoUsuarioEndereco.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context.cs" />
@@ -196,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809160604014_CreateTableUsuario.resx">
       <DependentUpon>201809160604014_CreateTableUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809182312269_AlteradoBancoUsuarioEndereco.resx">
+      <DependentUpon>201809182312269_AlteradoBancoUsuarioEndereco.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

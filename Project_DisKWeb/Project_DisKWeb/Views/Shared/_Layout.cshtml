@@ -38,7 +38,7 @@
                         <i class="material-icons">search</i>
                     </button>
                 </form>
-                
+
                 <i class="material-icons">
                     @Html.ActionLink("shopping_basket", "Index", "Produto", null, new { @class = "nav-link " })
                 </i>
@@ -56,17 +56,17 @@
         <br />
 
         @RenderBody()
-        <hr />
+
 
     </div>
-
-    <footer class="footer">
+    <hr />
+    <footer class="footer" style="padding-top: 1%">
+        
         <div class="container-fluid">
             <p>&copy; @DateTime.Now.Year - Desenvolvido por Arents TI</p>
         </div>
     </footer>
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+
 </body>
 </html>
