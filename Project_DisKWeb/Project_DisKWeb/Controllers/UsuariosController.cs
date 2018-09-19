@@ -6,122 +6,50 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Project_DisKWeb.DAL;
 using Project_DisKWeb.Models;
 
 namespace Project_DisKWeb.Controllers
 {
     public class UsuariosController : Controller
     {
-        private Context db = new Context();
 
-        // GET: Usuarios
+
+        #region pagina de login
         public ActionResult Login()
         {
             return View();
         }
+        #endregion
 
-        // GET: Usuarios/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
-            {
-                return HttpNotFound();
-            }
-            return View(usuario);
-        }
 
-        // GET: Usuarios/Create
-        public ActionResult Create()
+        #region pagina Cadastro  user
+        public ActionResult CadUser()
         {
             return View();
         }
+        #endregion
 
-        // POST: Usuarios/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        #region cadastro de user
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UsuarioId,Nome,Cpf,Email,Nascimento,Telefone,Senha,NivelAdmin,EnderecoId")] Usuario usuario)
+        public ActionResult CadUser(Usuario usuario)
         {
             if (ModelState.IsValid)
             {
-                db.Usuarios.Add(usuario);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                UsuarioDAO.CadUser(usuario);
 
-            return View(usuario);
-        }
+                ViewBag.test = usuario.UsuarioId;
+                return RedirectToAction("CadEndereco", "Usuario");
 
-        // GET: Usuarios/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
+            else
             {
-                return HttpNotFound();
+                ModelState.AddModelError("", "Não é possivel cadastra um usuario que contenha o mesmo e-mail!");
+                return View(usuario);
             }
-            return View(usuario);
         }
+        #endregion
 
-        // POST: Usuarios/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UsuarioId,Nome,Cpf,Email,Nascimento,Telefone,Senha,NivelAdmin,EnderecoId")] Usuario usuario)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(usuario).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(usuario);
-        }
 
-        // GET: Usuarios/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Usuario usuario = db.Usuarios.Find(id);
-            if (usuario == null)
-            {
-                return HttpNotFound();
-            }
-            return View(usuario);
-        }
-
-        // POST: Usuarios/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Usuario usuario = db.Usuarios.Find(id);
-            db.Usuarios.Remove(usuario);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
     }
 }
