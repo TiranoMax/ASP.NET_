@@ -50,9 +50,7 @@ namespace Project_DisKWeb.Models
         [Display(Name = "Nivel Administrador")]
         public string NivelAdmin { get; set; }
 
-        public int EnderecoId { get; set; }
-
-        public List<Endereco> Enderecos { get; set; }
+             
 
     }
 }

@@ -51,5 +51,8 @@ namespace Project_DisKWeb.Models
         [MinLength(1, ErrorMessage = "O Campo Bairro deve ter no minimo 1 caracter ")]
         [Display(Name = "Complemento")]
         public string Complemento { get; set; }
+
+
+
     }
 }
