@@ -20,13 +20,13 @@
     <nav class="navbar navbar-expand-lg navbar-transparent fixed-top navbar-light bg-info" style="border-bottom: solid;border-bottom-color: blueviolet">
         <div class="container">
             <div class="navbar-translate ">
-                @Html.ActionLink("DisKWeb", "Index", "Produto", null, new { @class = "nav-link" })
+                @Html.ActionLink("DisKWeb", "Home", "Produto", null, new { @class = "nav-link" })
             </div>
 
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav">
                     <li class="nav-item active ">
-                        @Html.ActionLink("Home", "Index", "Produto", null, new { @class = " nav-link" })
+                        @Html.ActionLink("Home", "Home", "Produto", null, new { @class = " nav-link" })
                     </li>
                 </ul>
 
@@ -44,7 +44,7 @@
                 </i>
 
                 <i class="material-icons">
-                    @Html.ActionLink("personal", "Index", "Produto", null, new { @class = "nav-link" })
+                    @Html.ActionLink("personal", "Login", "Usuarios", null, new { @class = "nav-link" })
                 </i>
             </div>
         </div>
@@ -59,14 +59,15 @@
 
 
     </div>
-    <hr />
-    <footer class="footer" style="padding-top: 1%">
-        
-        <div class="container-fluid">
-            <p>&copy; @DateTime.Now.Year - Desenvolvido por Arents TI</p>
-        </div>
-    </footer>
+    <div style="padding-top:4%">
+        <hr />
+        <footer class="footer" style="padding-top: 1%">
 
+            <div class="container-fluid">
+                <p>&copy; @DateTime.Now.Year - Desenvolvido por Arents TI</p>
+            </div>
+        </footer>
+    </div>
 
 </body>
 </html>
