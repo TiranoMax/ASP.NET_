@@ -28,7 +28,7 @@ namespace Project_DisKWeb.DAL
         public static Usuario BucarUsuarioPorEmailESenha(Usuario usuario)
         {
             return ctx.Usuarios.FirstOrDefault(x => x.Email.Equals(usuario.Email) && x.Senha.Equals(usuario.Senha));
-        }
+        } 
 
     }
 }
