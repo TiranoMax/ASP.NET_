@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Project_DisKWeb.DAL;
 using Project_DisKWeb.Models;
 
@@ -22,6 +23,19 @@ namespace Project_DisKWeb.Controllers
         }
         #endregion
 
+        [HttpPost]
+        public ActionResult Login([Bind(Include = "Email,Senha")] Usuario usuario)
+        {
+            usuario = UsuarioDAO.BucarUsuarioPorEmailESenha(usuario);
+            if (usuario != null)
+            {
+                FormsAuthentication.SetAuthCookie(usuario.Email, false);
+                return RedirectToAction("Index", "Produto");
+            }
+            ModelState.AddModelError("", "O e-mail ou senha não coincidem!");
+            return View();
+        }
+
 
         #region pagina Cadastro  user
         public ActionResult CadUser()
@@ -36,11 +50,13 @@ namespace Project_DisKWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                UsuarioDAO.CadUser(usuario);
 
-                ViewBag.test = usuario.UsuarioId;
-                return RedirectToAction("CadEndereco", "Usuario");
-
+                if (UsuarioDAO.CadUser(usuario))
+                {
+                    return RedirectToAction("Login", "Usuarios");
+                }
+                ModelState.AddModelError("", "Esse usuário já existe!");
+                return View(usuario);
             }
             else
             {

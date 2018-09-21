@@ -112,5 +112,11 @@ namespace Project_DisKWeb.Controllers
         }
         #endregion
 
+        #region Chamada Pagina Principal De produto nivel Normal
+        public ActionResult Home()
+        {
+            return View(ProdutoDAO.ListProduto());
+        }
+        #endregion
     }
 }
