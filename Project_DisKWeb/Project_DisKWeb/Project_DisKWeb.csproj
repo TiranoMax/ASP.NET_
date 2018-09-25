@@ -154,6 +154,10 @@
     <Compile Include="Migrations\201809182312269_AlteradoBancoUsuarioEndereco.Designer.cs">
       <DependentUpon>201809182312269_AlteradoBancoUsuarioEndereco.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809250317023_AlterTableEnderecoAddUsuarioId.cs" />
+    <Compile Include="Migrations\201809250317023_AlterTableEnderecoAddUsuarioId.Designer.cs">
+      <DependentUpon>201809250317023_AlterTableEnderecoAddUsuarioId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\Endereco.cs" />
@@ -178,6 +182,7 @@
     <Content Include="Views\Usuarios\Login.cshtml" />
     <Content Include="Views\Produto\Home.cshtml" />
     <Content Include="Views\Produto\Detalhes.cshtml" />
+    <Content Include="Views\Usuarios\CadEndereco.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -206,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809182312269_AlteradoBancoUsuarioEndereco.resx">
       <DependentUpon>201809182312269_AlteradoBancoUsuarioEndereco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809250317023_AlterTableEnderecoAddUsuarioId.resx">
+      <DependentUpon>201809250317023_AlterTableEnderecoAddUsuarioId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

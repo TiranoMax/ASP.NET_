@@ -1,6 +1,7 @@
 ﻿using Project_DisKWeb.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 
@@ -28,7 +29,13 @@ namespace Project_DisKWeb.DAL
         public static Usuario BucarUsuarioPorEmailESenha(Usuario usuario)
         {
             return ctx.Usuarios.FirstOrDefault(x => x.Email.Equals(usuario.Email) && x.Senha.Equals(usuario.Senha));
-        } 
+        }
 
+        internal static void CadEnderecoUser(Endereco endereco)
+        {
+            ctx.Enderecos.Add(endereco);
+         
+           
+        }
     }
 }

@@ -67,6 +67,24 @@ namespace Project_DisKWeb.Controllers
         }
         #endregion
 
+        #region pagina cadastro de endereco usuario
+        public ActionResult CadEndereco()
+        {
+            
+            return View();
+        }
+        #endregion
 
+        #region Cadastro de enderco usuario
+        [HttpPost]
+        public ActionResult CadEndereco(Endereco endereco)
+        {
+
+             endereco.UsaurioId = Convert.ToInt32(TempData["Test"]);
+            UsuarioDAO.CadEnderecoUser(endereco);
+            return RedirectToAction("Login", "usuarios");
+            
+        }
+        #endregion
     }
 }

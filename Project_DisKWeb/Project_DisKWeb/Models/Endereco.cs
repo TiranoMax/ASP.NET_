@@ -20,7 +20,7 @@ namespace Project_DisKWeb.Models
         public string CEP { get; set; }
 
         [Required(ErrorMessage = "O campo endereço é obrigatório")]
-        [MaxLength(100, ErrorMessage = "O Campo endereço deve ter no máximo 100 caracteres")]
+        [MaxLength(100, ErrorMessage = "O Campo endereço deve ter no máximo 100 caracteres"),]
         [MinLength(3, ErrorMessage = "O Campo endereço deve ter no minimo 3 caracteres ")]
         [Display(Name = "Endereço")]
         public string Logradouro { get; set; }
@@ -52,7 +52,9 @@ namespace Project_DisKWeb.Models
         [Display(Name = "Complemento")]
         public string Complemento { get; set; }
 
+        public int UsaurioId { get; set; }
 
+        public virtual Usuario Usuario { get; set; }
 
     }
 }
