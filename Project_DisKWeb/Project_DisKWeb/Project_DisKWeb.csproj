@@ -177,6 +177,7 @@
     <Content Include="Views\Usuarios\EditUser.cshtml" />
     <Content Include="Views\Usuarios\Login.cshtml" />
     <Content Include="Views\Produto\Home.cshtml" />
+    <Content Include="Views\Produto\Detalhes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -118,5 +118,13 @@ namespace Project_DisKWeb.Controllers
             return View(ProdutoDAO.ListProduto());
         }
         #endregion
+
+        public ActionResult Detalhes(int id)
+        {
+            ViewBag.Mostrar = ProdutoDAO.SearchProdutoByID(id);
+            return View();
+        }
+
+
     }
 }

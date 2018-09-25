@@ -30,7 +30,7 @@ namespace Project_DisKWeb.Controllers
             if (usuario != null)
             {
                 FormsAuthentication.SetAuthCookie(usuario.Email, false);
-                return RedirectToAction("Index", "Produto");
+                return RedirectToAction("Home", "Produto");
             }
             ModelState.AddModelError("", "O e-mail ou senha não coincidem!");
             return View();
@@ -53,7 +53,8 @@ namespace Project_DisKWeb.Controllers
 
                 if (UsuarioDAO.CadUser(usuario))
                 {
-                    return RedirectToAction("Login", "Usuarios");
+                    TempData["Test"] = usuario.UsuarioId;
+                    return RedirectToAction("CadEndereco", "Usuarios");
                 }
                 ModelState.AddModelError("", "Esse usuário já existe!");
                 return View(usuario);
