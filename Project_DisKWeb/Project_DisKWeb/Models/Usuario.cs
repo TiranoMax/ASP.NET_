@@ -19,7 +19,7 @@ namespace Project_DisKWeb.Models
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "O campo CPF é obrigatório")]
-        [MaxLength(13, ErrorMessage = "O Campo CPF deve ter no minimo e no máximo 13 caracteres"), MinLength(13, ErrorMessage = "O Campo CPF deve ter no minimo e no máximo 13 caracteres")]
+        [MaxLength(11, ErrorMessage = "O Campo CPF deve ter no minimo e no máximo 11 caracteres"), MinLength(11, ErrorMessage = "O Campo CPF deve ter no minimo e no máximo 11 caracteres")]
         [Display(Name = "CPF")]
         public string Cpf { get; set; }
 
@@ -37,7 +37,7 @@ namespace Project_DisKWeb.Models
         public string Telefone { get; set; }
 
         [Required(ErrorMessage = "O campo senha é obrigatório")]
-        [MaxLength(60, ErrorMessage = "A senha deve ter no máximo 60 caracteres")]
+        [MaxLength(30, ErrorMessage = "A senha deve ter no máximo 30 caracteres"), MinLength(5, ErrorMessage = "A senha deve ter no mínimo 5 caracteres")]
         [DataType(DataType.Password)]
         [Display(Name = "Senha")]
         public string Senha { get; set; }
