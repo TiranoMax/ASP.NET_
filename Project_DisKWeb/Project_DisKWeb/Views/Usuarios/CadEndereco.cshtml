@@ -2,14 +2,14 @@
 @using Project_DisKWeb.Models
 
 
-<h2>CadEndereco</h2>
+<h2>2 - Dados Cadastrais</h2>
 
 @using (Html.BeginForm("CadEndereco", "Usuarios", FormMethod.Post, new { @class = "form-horizontal " })) 
 {
                 @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>Endereco</h4>
+    <h4>Endereço</h4>
    
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
