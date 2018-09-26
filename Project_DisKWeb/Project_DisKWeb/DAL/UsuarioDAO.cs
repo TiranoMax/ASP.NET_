@@ -31,11 +31,16 @@ namespace Project_DisKWeb.DAL
             return ctx.Usuarios.FirstOrDefault(x => x.Email.Equals(usuario.Email) && x.Senha.Equals(usuario.Senha));
         }
 
-        internal static void CadEnderecoUser(Endereco endereco)
+        public static void CadEnderecoUser(Endereco endereco)
         {
             ctx.Enderecos.Add(endereco);
-         
+            ctx.SaveChanges();
            
+        }
+
+        public static Usuario BuscarUsuario(int? id)
+        {
+            return ctx.Usuarios.Find(id);
         }
     }
 }
