@@ -4,9 +4,11 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Newtonsoft.Json;
 using Project_DisKWeb.DAL;
 using Project_DisKWeb.Models;
 
@@ -23,6 +25,7 @@ namespace Project_DisKWeb.Controllers
         }
         #endregion
 
+        #region realiza verificacao de login
         [HttpPost]
         public ActionResult Login([Bind(Include = "Email,Senha")] Usuario usuario)
         {
@@ -35,7 +38,15 @@ namespace Project_DisKWeb.Controllers
             ModelState.AddModelError("", "O e-mail ou senha não coincidem!");
             return View();
         }
+        #endregion
 
+        #region Logout
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Home", "Produto");
+        } 
+        #endregion
 
         #region pagina Cadastro  user
         public ActionResult CadUser()
@@ -70,8 +81,11 @@ namespace Project_DisKWeb.Controllers
         #region pagina cadastro de endereco usuario
         public ActionResult CadEndereco()
         {
-            
-            return View();
+            if (TempData["Mensagem"] != null)
+            {
+                ModelState.AddModelError("", TempData["Mensagem"].ToString());
+            }
+            return View((Endereco)TempData["endereco"]);
         }
         #endregion
 
@@ -79,12 +93,50 @@ namespace Project_DisKWeb.Controllers
         [HttpPost]
         public ActionResult CadEndereco(Endereco endereco)
         {
-
-             endereco.UsaurioId = Convert.ToInt32(TempData["Test"]);
+            var testc = Convert.ToInt32(TempData["Test"]);
+            endereco.Usuario = UsuarioDAO.BuscarUsuario(testc);
+             
             UsuarioDAO.CadEnderecoUser(endereco);
             return RedirectToAction("Login", "usuarios");
             
         }
         #endregion
+
+        #region Consulta de Cep
+
+        [HttpPost]
+        public ActionResult ConsultaCep(Endereco endereco)
+        {
+            try
+            {
+                //Download da string em jason
+                string url = "https://api.postmon.com.br/v1/cep/" + endereco.CEP;
+                WebClient client = new WebClient();
+                string json = client.DownloadString(url);
+
+                //converter a string para utf-8
+                byte[] bytes = Encoding.Default.GetBytes(json);
+                json = Encoding.UTF8.GetString(bytes);
+
+                //converter o json para objeto
+                endereco = JsonConvert.DeserializeObject<Endereco>(json);
+
+                //passar informação para qualquer action do controller
+                TempData["endereco"] = endereco;
+            }
+            catch (Exception)
+            {
+                TempData["Mensagem"] = "CEP inválido!";
+
+            }
+
+            return RedirectToAction("CadEndereco", "Usuarios");
+        }
+
+
+
+        #endregion
+
+
     }
 }
