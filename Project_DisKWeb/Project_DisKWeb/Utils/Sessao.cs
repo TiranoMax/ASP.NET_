@@ -7,9 +7,9 @@ namespace Ecommerce.Utils
 {
     public class Sessao
     {
-        private static string NOME_SESSAO = "";
+        private static string NOME_SESSAO = "Cart";
 
-        public static string RetornarCarrinhoId()
+        public static string ReturnCarT()
         {
             if (HttpContext.Current.Session[NOME_SESSAO] == null)
             {
@@ -19,7 +19,7 @@ namespace Ecommerce.Utils
             return HttpContext.Current.Session[NOME_SESSAO].ToString();
         }
 
-        public static void NovaSessao()
+        public static void NewSessao()
         {
             Guid guid = Guid.NewGuid();
             HttpContext.Current.Session[NOME_SESSAO] = guid.ToString();

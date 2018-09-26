@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Ecommerce.Utils;
 using Project_DisKWeb.DAL;
 using Project_DisKWeb.Models;
 
@@ -129,9 +130,68 @@ namespace Project_DisKWeb.Controllers
         {
             ViewBag.Mostrar = ProdutoDAO.SearchProdutoByID(id);
             return View();
-        } 
+        }
         #endregion
 
+       
+
+        #region AddToCart
+
+        public ActionResult AddToCart(int id)
+        {
+            Produto Produto = ProdutoDAO.SearchProdutoByID(id);
+
+
+            Compra compra = new Compra
+            {
+                Produto = Produto,
+                Qtde = 1,
+                Data = DateTime.Now,
+                DataDevolucao = DateTime.Today.AddDays(1),
+                Valor = Produto.Preco_Aluguel,
+                Multa = 0,
+                CarTId = Sessao.ReturnCarT()
+            };
+            ProdutoDAO.AddToCart(compra);            
+
+            return RedirectToAction("CarT");
+        }
+        #endregion
+
+        #region Listar Vendas
+        public ActionResult CarT()
+        {
+            return View(ProdutoDAO.SearchProdutosByCarTId());
+        }
+        #endregion
+
+        public ActionResult RemovendoItem(int id)
+        {
+            ProdutoDAO.RemoveToCart(id);
+            return RedirectToAction("CarT", "Produto");
+        }
+
+        public ActionResult AdicionarItem(int id)
+        {
+            ProdutoDAO.AumentarDataEntregaProdutoCart(id);
+            return RedirectToAction("CarT", "Produto");
+        }
+
+        public ActionResult DiminuirItem(int id)
+        {
+            ProdutoDAO.DiminuirDataEntregaProdutoCart(id);
+            return RedirectToAction("CarT", "Produto");
+        }
+
+
+        [Authorize(Roles = "Usuario")]
+        public ActionResult FinalCompra()
+        {
+            ViewBag.Total = ProdutoDAO.TotalCart();
+            ViewBag.itemnsCompra = ProdutoDAO.SearchProdutosByCarTId();
+            
+            return View();
+        }
 
     }
 }

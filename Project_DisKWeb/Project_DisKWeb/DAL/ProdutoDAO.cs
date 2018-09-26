@@ -1,8 +1,9 @@
-﻿using Project_DisKWeb.Models;
+﻿using Ecommerce.Utils;
+using Project_DisKWeb.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
+using System.Linq; 
 using System.Web;
 
 namespace Project_DisKWeb.DAL
@@ -53,6 +54,43 @@ namespace Project_DisKWeb.DAL
             ctx.SaveChanges();
         }
         #endregion
+
+
+        #region AddToCarT
+        public static void AddToCart(Compra compra)
+        {
+            string Cart = Sessao.ReturnCarT();
+
+            Compra item = ctx.Compras.Include("Produto").FirstOrDefault(x => x.Produto.ProdutoId == compra.Produto.ProdutoId && x.CarTId.Equals(Cart));
+
+            if (item == null)
+            {
+                ctx.Compras.Add(compra);
+            }
+            ctx.SaveChanges();
+
+
+        }
+        #endregion
+
+        #region RRetorna Produtos Cart
+        public static List<Compra> SearchProdutosByCarTId()
+        {
+            string CarTId = Sessao.ReturnCarT();
+            return ctx.Compras.Include("Produto").Where(x => x.CarTId.Equals(CarTId)).ToList();
+        }
+        #endregion
+
+        #region Remover Do Carrinho
+        public static void RemoveToCart(int id)
+        {
+            Compra item = ctx.Compras.Find(id);
+
+            ctx.Compras.Remove(item);
+            ctx.SaveChanges();
+        }
+        #endregion
+
 
     }
 }

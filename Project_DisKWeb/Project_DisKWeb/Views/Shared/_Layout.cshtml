@@ -26,6 +26,10 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav">
 
+                    <li class="nav-item active ">
+                        @Html.ActionLink("Home", "Home", "Produto", null, new { @class = " nav-link" })
+                    </li>
+
 
 
                     @if (Request.IsAuthenticated)
@@ -34,9 +38,6 @@
                         if (Session["NivelAdmin"] != null)
                         {
 
-                            <li class="nav-item active ">
-                                @Html.ActionLink("Home", "Home", "Produto", null, new { @class = " nav-link" })
-                            </li>
 
                             if (Session["NivelAdmin"].ToString() == "Admin")
                             {
@@ -59,12 +60,7 @@
                             }
 
                         }
-                        else
-                        {
-                            <li class="nav-item active ">
-                                @Html.ActionLink("Home", "Home", "Produto", null, new { @class = " nav-link" })
-                            </li>
-                        }
+
                     }
 
 
@@ -85,10 +81,11 @@
                 </form>
                 <div style="padding-left: 1%; padding-right: 1%">
                     <i class="material-icons">
-                        @Html.ActionLink("shopping_basket", "Index", "Produto", null, new { @class = "nav-link " })
+                        @Html.ActionLink("shopping_basket", "CarT", "Produto", null, new { @class = "nav-link " })
                     </i>
                 </div>
 
+                
 
                 @if (!Request.IsAuthenticated)
                 {
