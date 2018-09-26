@@ -67,12 +67,12 @@ namespace Project_DisKWeb.Controllers
                     TempData["Test"] = usuario.UsuarioId;
                     return RedirectToAction("CadEndereco", "Usuarios");
                 }
-                ModelState.AddModelError("", "Esse usuário já existe!");
+                ModelState.AddModelError("", "Não é possivel cadastra um usuario que contenha o mesmo e-mail!");
                 return View(usuario);
             }
             else
             {
-                ModelState.AddModelError("", "Não é possivel cadastra um usuario que contenha o mesmo e-mail!");
+                ModelState.AddModelError("", "Por Favor Preencha todos os campos!");
                 return View(usuario);
             }
         }
