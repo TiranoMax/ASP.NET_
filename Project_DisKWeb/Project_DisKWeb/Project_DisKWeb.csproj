@@ -51,6 +51,9 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -158,6 +161,22 @@
     <Compile Include="Migrations\201809250317023_AlterTableEnderecoAddUsuarioId.Designer.cs">
       <DependentUpon>201809250317023_AlterTableEnderecoAddUsuarioId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809251902155_altertableenderecoRetiradoRequired.cs" />
+    <Compile Include="Migrations\201809251902155_altertableenderecoRetiradoRequired.Designer.cs">
+      <DependentUpon>201809251902155_altertableenderecoRetiradoRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809260229305_altertableEnderecoCampoEstado.cs" />
+    <Compile Include="Migrations\201809260229305_altertableEnderecoCampoEstado.Designer.cs">
+      <DependentUpon>201809260229305_altertableEnderecoCampoEstado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809260324497_altertableEnderecoCampoCidade.cs" />
+    <Compile Include="Migrations\201809260324497_altertableEnderecoCampoCidade.Designer.cs">
+      <DependentUpon>201809260324497_altertableEnderecoCampoCidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809260545271_altertableEnderecoRemoveUsuarioId.cs" />
+    <Compile Include="Migrations\201809260545271_altertableEnderecoRemoveUsuarioId.Designer.cs">
+      <DependentUpon>201809260545271_altertableEnderecoRemoveUsuarioId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Context.cs" />
     <Compile Include="Models\Endereco.cs" />
@@ -214,6 +233,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809250317023_AlterTableEnderecoAddUsuarioId.resx">
       <DependentUpon>201809250317023_AlterTableEnderecoAddUsuarioId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809251902155_altertableenderecoRetiradoRequired.resx">
+      <DependentUpon>201809251902155_altertableenderecoRetiradoRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809260229305_altertableEnderecoCampoEstado.resx">
+      <DependentUpon>201809260229305_altertableEnderecoCampoEstado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809260324497_altertableEnderecoCampoCidade.resx">
+      <DependentUpon>201809260324497_altertableEnderecoCampoCidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809260545271_altertableEnderecoRemoveUsuarioId.resx">
+      <DependentUpon>201809260545271_altertableEnderecoRemoveUsuarioId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
