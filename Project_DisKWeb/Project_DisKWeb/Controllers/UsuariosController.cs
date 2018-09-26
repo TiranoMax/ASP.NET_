@@ -32,7 +32,8 @@ namespace Project_DisKWeb.Controllers
             usuario = UsuarioDAO.BucarUsuarioPorEmailESenha(usuario);
             if (usuario != null)
             {
-                FormsAuthentication.SetAuthCookie(usuario.Email, false);
+                FormsAuthentication.SetAuthCookie(usuario.Email, false);                
+                Session["NivelAdmin"] = usuario.NivelAdmin;
                 return RedirectToAction("Home", "Produto");
             }
             ModelState.AddModelError("", "O e-mail ou senha não coincidem!");
@@ -89,7 +90,7 @@ namespace Project_DisKWeb.Controllers
         }
         #endregion
 
-        #region Cadastro de enderco usuario
+        #region Cadastro de endereco usuario
         [HttpPost]
         public ActionResult CadEndereco(Endereco endereco)
         {
