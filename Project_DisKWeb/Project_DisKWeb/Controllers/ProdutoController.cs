@@ -15,6 +15,7 @@ namespace Project_DisKWeb.Controllers
     public class ProdutoController : Controller
     {
         #region Index
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             return View(ProdutoDAO.ListProduto());
@@ -22,6 +23,7 @@ namespace Project_DisKWeb.Controllers
         #endregion
 
         #region Chamada View CadProduto
+        [Authorize(Roles = "Admin")]
         public ActionResult CadProduto()
         {
             return View();
@@ -29,7 +31,8 @@ namespace Project_DisKWeb.Controllers
         #endregion
 
         #region CadProduto
-        [HttpPost]        
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
         public ActionResult CadProduto(Produto produto, HttpPostedFileBase fupImg)
         {
             if (ModelState.IsValid)
@@ -47,8 +50,8 @@ namespace Project_DisKWeb.Controllers
                 }
 
                 ProdutoDAO.CadProduto(produto);
-                
-                return RedirectToAction("Index", "Produto"); 
+
+                return RedirectToAction("Index", "Produto");
             }
             else
             {
@@ -58,16 +61,17 @@ namespace Project_DisKWeb.Controllers
         #endregion
 
         #region Chamada View EditProduto
+        [Authorize(Roles = "Admin")]
         public ActionResult EditProduto(int id)
         {
-            return View(ProdutoDAO.SearchProdutoByID(id)); 
+            return View(ProdutoDAO.SearchProdutoByID(id));
         }
         #endregion
 
-
         #region EditProduto
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult EditProduto(Produto produtoAlterado , HttpPostedFileBase fupImagem)
+        public ActionResult EditProduto(Produto produtoAlterado, HttpPostedFileBase fupImagem)
         {
 
             Produto produtoOri = ProdutoDAO.SearchProdutoByID(produtoAlterado.ProdutoId);
@@ -82,7 +86,7 @@ namespace Project_DisKWeb.Controllers
             produtoOri.QTDE_Estoque_aluguel = produtoAlterado.QTDE_Estoque_aluguel;
             produtoOri.Preco_Aluguel = produtoAlterado.Preco_Aluguel;
 
-            
+
             if (ModelState.IsValid)
             {
                 if (fupImagem != null)
@@ -92,19 +96,20 @@ namespace Project_DisKWeb.Controllers
                     fupImagem.SaveAs(caminho);
                     produtoOri.Img = nomeImagem;
                 }
-                
+
                 if (ProdutoDAO.AlterProduto(produtoOri))
                 {
                     return RedirectToAction("Index", "Produto");
                 }
 
             }
-            return View(produtoOri);     
-           
+            return View(produtoOri);
+
         }
         #endregion
 
         #region Chamada Delete
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             ProdutoDAO.DeleteProduto(id);
@@ -119,11 +124,13 @@ namespace Project_DisKWeb.Controllers
         }
         #endregion
 
+        #region Detalhes nivel normal
         public ActionResult Detalhes(int id)
         {
             ViewBag.Mostrar = ProdutoDAO.SearchProdutoByID(id);
             return View();
-        }
+        } 
+        #endregion
 
 
     }
